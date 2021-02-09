@@ -10,10 +10,52 @@
 .mdl-layout__header-row{
     padding: 40px!important;
 }
+.mdl-button--fab:hover{
+    box-shadow: 0 1px 10px 0 rgb(0 0 0 / 25%), 0 1px 10px 0 rgb(0 0 0 / 35%);
+}
+.mdl-layout__drawer>.mdl-layout-title{
+    background-color: #392063;
+    height: 80px;
+    color: white;
+    padding-top: 10px;
+    .square{
+        text-align: center;
+        display: block;
+        height: 60px;
+        width: 60px;
+        line-height: 60px;
+        background-color: #ffAB40;
+        font-size: 50px;
+        font-weight: bold;
+        border-radius: 4px;
+    }
+}
+.mdl-navigation__link{
+    text-transform: uppercase;
+
+    &::after{
+        content: "";
+        padding-left: 0px;
+        opacity: 0;
+        transition: 500ms;
+    }
+    &:hover::after{
+        content: "";
+        height: 20px;
+        background-image: url(../../public/caret.svg);
+        background-size: contain;
+        background-position: center right;
+        background-repeat: no-repeat;
+        padding-left: 20px;
+        opacity: 100;
+        color: #757575;
+    }
+}
 .mdl-card{
     max-width: 100%;
     height: 100%;
     justify-content: space-between;
+    border-radius: 4px;
 }
 .top{
     .mdl-textfield{
@@ -49,12 +91,16 @@ h1{
 
         .title{
             align-self: flex-start;
-            padding-top: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            text-transform: uppercase;
         }
         .subtitle{
             align-self: flex-start;
             font-style: italic;
             margin: 0;
+            color: white;
         }
     }
     .mdl-card__supporting-text{

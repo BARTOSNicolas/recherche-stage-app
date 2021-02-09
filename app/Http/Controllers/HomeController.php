@@ -35,6 +35,27 @@ class HomeController extends Controller
         $entreprises = Suivi::where('user_id', Auth::user()->id)->whereNull('first_date')->get();
         return view('home', ['entreprises' => $entreprises]);
     }
+    public function positive(){
+        $entreprises = Suivi::where([
+            ['user_id', Auth::user()->id],
+            ['status', '=', 'positif'],
+        ])->get();
+        return view('home', ['entreprises' => $entreprises]);
+    }
+    public function negative(){
+        $entreprises = Suivi::where([
+            ['user_id', Auth::user()->id],
+            ['status', '=', 'negatif'],
+        ])->get();
+        return view('home', ['entreprises' => $entreprises]);
+    }
+    public function encours(){
+        $entreprises = Suivi::where([
+            ['user_id', Auth::user()->id],
+            ['status', '=', 'encours'],
+        ])->get();
+        return view('home', ['entreprises' => $entreprises]);
+    }
 
     public function goToInsert(){
         return view('formulaire');
@@ -54,6 +75,7 @@ class HomeController extends Controller
         $entreprise->ent_contact_name = $request->input('ent_contact_name');
         $entreprise->ent_mail = $request->input('ent_mail');
         $entreprise->ent_phone = $request->input('ent_phone');
+        $entreprise->ent_web = $request->input('ent_web');
         $entreprise->ent_description = $request->input('ent_description');
 
         $entreprise->save();

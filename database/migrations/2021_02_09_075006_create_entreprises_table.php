@@ -19,7 +19,8 @@ class CreateEntreprisesTable extends Migration
             $table->char('ent_city',255);
             $table->char('ent_contact_name',255)->nullable();
             $table->char('ent_mail',100)->nullable();
-            $table->char('ent_phone',20)->nullable();
+            $table->char('ent_phone',100)->nullable();
+            $table->char('ent_web',100)->nullable();
             $table->text('ent_description')->nullable();
 
         });

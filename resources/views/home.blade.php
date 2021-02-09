@@ -4,21 +4,24 @@
     <div class="container">
         <div class="mdl-grid">
             @foreach($entreprises as $compagny)
-            <div class="enterprise-card mdl-cell mdl-cell--4-col mdl-cell--6-col-tablet mdl-cell--12-col-phone">
+            <div class="enterprise-card mdl-cell mdl-cell--3-col mdl-cell--6-col-tablet mdl-cell--12-col-phone">
                 <div class=" mdl-card mdl-shadow--2dp">
                     <div class="card-title mdl-card__title mdl-card--expand" style="background-color:
                         @if($compagny->status == 'negatif')
                             FireBrick
                         @elseif($compagny->status == 'positif')
-                            OliveDrab
+                            #30B349
+                        @elseif($compagny->status == 'encours')
+                            #492980
                         @else
-                            SlateGray
+                            #201238
                         @endif
                         ">
                         <h2 class="title mdl-card__title-text">{{ $compagny->entreprise->ent_name }}</h2>
                         <p class="subtitle">{{ $compagny->entreprise->ent_city }}</p>
                     </div>
                     <div class="mdl-card__supporting-text">
+                        <a class="web" target="_blank" href="http://{{ $compagny->entreprise->ent_web }}">{{ $compagny->entreprise->ent_web }}</a>
                         <p class="contact">{{ $compagny->entreprise->ent_contact_name }}</p>
                         <p class="phone">{{ $compagny->entreprise->ent_phone }}</p>
                         <a href="mailto:{{ $compagny->entreprise->ent_mail }}" class="mail">{{ $compagny->entreprise->ent_mail }}</a>

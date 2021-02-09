@@ -32,7 +32,11 @@
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="phone" name="ent_phone" value="{{ $suivi->entreprise->ent_phone }}">
-                    <label class="mdl-textfield__label" for="phone">Téléphone.</label>
+                    <label class="mdl-textfield__label" for="phone">Téléphone</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="phone" name="ent_web" value="{{ $suivi->entreprise->ent_web }}">
+                    <label class="mdl-textfield__label" for="phone">Site Web</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <textarea class="mdl-textfield__input" rows= "5" id="description" name="ent_description">{{ $suivi->entreprise->ent_description }}</textarea>
@@ -63,7 +67,11 @@
                 </div>
                 <div>
                     <label class="radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="encours">
-                        <input type="radio" id="encours" class="mdl-radio__button" name="status" value="encours" {{ $suivi->status == "encours"? "checked" : 'checked' }}>
+                        <input type="radio" id="encours" class="mdl-radio__button" name="status" value="afaire" {{ $suivi->status == "afaire"? "checked" : 'checked' }}>
+                        <span class="mdl-radio__label">A faire</span>
+                    </label>
+                    <label class="radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="encours">
+                        <input type="radio" id="encours" class="mdl-radio__button" name="status" value="encours" {{ $suivi->status == "encours"? "checked" : '' }}>
                         <span class="mdl-radio__label">En Cours</span>
                     </label>
                     <label class="radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="positif">

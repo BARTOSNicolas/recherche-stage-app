@@ -27,12 +27,15 @@
         </div>
     </header>
     <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">{{ Auth::user()->name }}</span>
+        <div class="mdl-layout-title"><span class="square">{{ substr(Auth::user()->name, 0,1) }}</span></div>
         <nav class="mdl-navigation">
             <a class="mdl-navigation__link" href="{{ route('homepage') }}">Toutes</a>
             <a class="mdl-navigation__link" href="{{ route('candidate') }}">à candidater</a>
+            <a class="mdl-navigation__link" href="{{ route('encours') }}">En cours</a>
             <a class="mdl-navigation__link" href="{{ route('relaunch') }}">à relancer</a>
+            <a class="mdl-navigation__link" href="{{ route('positive') }}">Les positives</a>
             <a class="mdl-navigation__link" href="{{ route('interview') }}">Mes entretiens</a>
+            <a class="mdl-navigation__link" href="{{ route('negative') }}">Les négatives</a>
             <a class="mdl-navigation__link" href="{{ route('logout') }}">Déconnexion</a>
         </nav>
     </div>

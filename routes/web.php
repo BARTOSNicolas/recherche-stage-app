@@ -26,6 +26,9 @@ Route::get('/', [HomeController::class, 'index'])->name('homepage')->middleware(
 Route::get('/relance', [HomeController::class, 'relaunch'])->name('relaunch')->middleware('auth');
 Route::get('/entretien', [HomeController::class, 'interview'])->name('interview')->middleware('auth');
 Route::get('/candidater', [HomeController::class, 'candidate'])->name('candidate')->middleware('auth');
+Route::get('/positive', [HomeController::class, 'positive'])->name('positive')->middleware('auth');
+Route::get('/negative', [HomeController::class, 'negative'])->name('negative')->middleware('auth');
+Route::get('/encours', [HomeController::class, 'encours'])->name('encours')->middleware('auth');
 //Insert
 Route::get('/insert', [HomeController::class, 'goToInsert'])->name('formulaire')->middleware('auth');
 Route::post('/insert', [HomeController::class, 'insert'])->name('validate')->middleware('auth');

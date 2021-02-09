@@ -31,7 +31,11 @@
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="phone" name="ent_phone" value="{{ old('ent_phone') }}">
-                <label class="mdl-textfield__label" for="phone">Téléphone.</label>
+                <label class="mdl-textfield__label" for="phone">Téléphone</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="phone" name="ent_web" value="{{ old('ent_web') }}">
+                <label class="mdl-textfield__label" for="phone">Site Web</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <textarea class="mdl-textfield__input" type="text" rows= "5" id="description" name="ent_description">{{ old('ent_description') }}</textarea>
@@ -62,7 +66,11 @@
             </div>
             <div>
                 <label class="radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="encours">
-                    <input type="radio" id="encours" class="mdl-radio__button" name="status" value="encours" {{ old('status') == "encours"? "checked" : 'checked' }}>
+                    <input type="radio" id="encours" class="mdl-radio__button" name="status" value="afaire" {{ old('status') == "afaire"? "checked" : 'checked' }}>
+                    <span class="mdl-radio__label">A faire</span>
+                </label>
+                <label class="radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="encours">
+                    <input type="radio" id="encours" class="mdl-radio__button" name="status" value="encours" {{ old('status') == "encours"? "checked" : '' }}>
                     <span class="mdl-radio__label">En Cours</span>
                 </label>
                 <label class="radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="positif">
@@ -80,6 +88,7 @@
             <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                 Envoyer
             </button>
+            <a href="{{ route('homepage')}}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Annuler</a>
         </div>
     </form>
     </div>
