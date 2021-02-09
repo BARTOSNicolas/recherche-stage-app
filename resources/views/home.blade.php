@@ -4,7 +4,7 @@
     <div class="container">
         <div class="mdl-grid">
             @foreach($entreprises as $compagny)
-            <div class="enterprise-card mdl-cell mdl-cell--3-col mdl-cell--6-col-tablet mdl-cell--12-col-phone">
+            <div class="enterprise-card mdl-cell mdl-cell--4-col mdl-cell--6-col-tablet mdl-cell--12-col-phone">
                 <div class=" mdl-card mdl-shadow--2dp">
                     <div class="card-title mdl-card__title mdl-card--expand" style="background-color:
                         @if($compagny->status == 'negatif')
@@ -28,7 +28,7 @@
                         <a href="{{ route('update', $compagny->id) }}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                             Modifier
                         </a>
-                        <form action="{{ route('delete', $compagny->id) }}" method="POST">
+                        <form action="{{ route('delete', $compagny->id) }}" method="POST" class="btn-delete">
                             @method('DELETE')
                             @csrf
                             <button type="submit" onclick="return confirm('Etes-vous sûr')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">

@@ -3,19 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Suivi;
 use App\Models\Entreprise;
 
+
 class HomeController extends Controller
+
 {
     public function index(){
-        $entreprises = Suivi::all();
+        $entreprises = Suivi::where('user_id', Auth::user()->id)->get();
         return view('home', ['entreprises' => $entreprises]);
     }
 
     public function relaunch(){
         $entreprises = Suivi::where([
+            ['user_id', Auth::user()->id],
             ['relaunch', '=', null],
+            ['first_date', '!=', null],
             ['status', '=', 'encours'],
             ['response', '=', 'off'],
         ])->orderBy('relaunch')->get();
@@ -23,7 +28,11 @@ class HomeController extends Controller
     }
 
     public function interview(){
-        $entreprises = Suivi::whereNotNull('interview_date')->orderBy('interview_date')->get();
+        $entreprises = Suivi::where('user_id', Auth::user()->id)->whereNotNull('interview_date')->orderBy('interview_date')->get();
+        return view('home', ['entreprises' => $entreprises]);
+    }
+    public function candidate(){
+        $entreprises = Suivi::where('user_id', Auth::user()->id)->whereNull('first_date')->get();
         return view('home', ['entreprises' => $entreprises]);
     }
 
@@ -51,7 +60,7 @@ class HomeController extends Controller
 
         $suivi = new Suivi;
 
-        $suivi->user_id = 1; //Amodifier avec la gestion des users
+        $suivi->user_id = Auth::user()->id; //Amodifier avec la gestion des users
         $suivi->entreprise_id = $entreprise->id;
         $suivi->first_date = $request->input('first_date');
         $suivi->relaunch = $request->input('relaunch');
