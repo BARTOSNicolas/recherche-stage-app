@@ -3,6 +3,9 @@
 @section('content')
     <div class="container">
         <div class="mdl-grid">
+            @if(isset($vide))
+                <p>{{$vide}}</p>
+            @endif
             @foreach($entreprises as $compagny)
             <div class="enterprise-card mdl-cell mdl-cell--3-col mdl-cell--6-col-tablet mdl-cell--12-col-phone">
                 <div class=" mdl-card mdl-shadow--2dp">
@@ -17,6 +20,9 @@
                             #201238
                         @endif
                         ">
+                        @if($compagny->response == 'on')
+                            <div class="mail-logo"><img src="{{ asset('images/mail-solid.svg') }}" alt="Réponse réçu"></div>
+                        @endif
                         <h2 class="title mdl-card__title-text">{{ $compagny->entreprise->ent_name }}</h2>
                         <p class="subtitle">{{ $compagny->entreprise->ent_city }}</p>
                     </div>
@@ -34,7 +40,7 @@
                         <form action="{{ route('delete', $compagny->id) }}" method="POST" class="btn-delete">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" onclick="return confirm('Etes-vous sûr')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            <button type="submit" onClick="return confirm('Etes-vous sûr')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                                 supprimer
                             </button>
                         </form>

@@ -9,7 +9,6 @@ class Suivi extends Model
 {
     use HasFactory;
 
-//    protected $guarded = [];
     protected $fillable = ['first_date', 'relaunch', 'relaunched', 'responses', 'status', 'interview_date'];
 
     public function user(){

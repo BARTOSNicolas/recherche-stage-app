@@ -16,11 +16,17 @@ use \App\Http\Controllers\HomeController;
 //Authentification
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authentification');
-Route::get('/create_user', [LoginController::class, 'create_index'])->name('create_user');
-Route::post('/create_user', [LoginController::class, 'create_user'])->name('created_user');
+Route::get('/creation_utilisateur', [LoginController::class, 'create_index'])->name('create_user');
+Route::post('/creation_utilisateur', [LoginController::class, 'create_user'])->name('created_user');
+//Forgot password
+Route::get('/motdepassperdu', [LoginController::class, 'lost_password'])->middleware('guest')->name('lost_password');
+Route::post('/motdepassperdu', [LoginController::class, 'request_password'])->middleware('guest')->name('request_password');
+Route::get('/reset-password/{token}', function ($token) {return view('auth.reset-password', ['token' => $token]);})->middleware('guest')->name('password.reset');
+Route::post('/reset-password', [LoginController::class, 'reset_password'])->middleware('guest')->name('update_password');
+
 
 //Logout
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/deconnexion', [LoginController::class, 'logout'])->name('logout');
 //HomePage
 Route::get('/', [HomeController::class, 'index'])->name('homepage')->middleware('auth');
 Route::get('/relance', [HomeController::class, 'relaunch'])->name('relaunch')->middleware('auth');
@@ -30,10 +36,14 @@ Route::get('/positive', [HomeController::class, 'positive'])->name('positive')->
 Route::get('/negative', [HomeController::class, 'negative'])->name('negative')->middleware('auth');
 Route::get('/encours', [HomeController::class, 'encours'])->name('encours')->middleware('auth');
 //Insert
-Route::get('/insert', [HomeController::class, 'goToInsert'])->name('formulaire')->middleware('auth');
-Route::post('/insert', [HomeController::class, 'insert'])->name('validate')->middleware('auth');
+Route::get('/ajouter', [HomeController::class, 'goToInsert'])->name('formulaire')->middleware('auth');
+Route::post('/ajouter', [HomeController::class, 'insert'])->name('validate')->middleware('auth');
 //UpDate
-Route::get('/update/{suivi}', [HomeController::class, 'goToUpdate'])->name('update')->middleware('auth');
-Route::put('/updated/{suivi}', [HomeController::class, 'updated'])->name('updated')->middleware('auth');
+Route::get('/miseajour/{suivi}', [HomeController::class, 'goToUpdate'])->name('update')->middleware('auth');
+Route::put('/miseajour/{suivi}', [HomeController::class, 'updated'])->name('updated')->middleware('auth');
 //Delete
-Route::delete('/{suivi}', [HomeController::class, 'delete'])->name('delete')->middleware('auth');
+Route::delete('/effacement/{suivi}', [HomeController::class, 'delete'])->name('delete')->middleware('auth');
+//Page Menu
+Route::get('/information', [HomeController::class, 'info'])->name('info');
+Route::get('/protectiondesdonnees', [HomeController::class, 'data'])->name('data');
+Route::get('/envoyersonidee', [HomeController::class, 'idea'])->name('idea');

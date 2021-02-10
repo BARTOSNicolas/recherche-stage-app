@@ -9,13 +9,17 @@ use App\Models\Entreprise;
 
 
 class HomeController extends Controller
-
 {
+    //Homepage avec Toutes les candidatures du User
     public function index(){
         $entreprises = Suivi::where('user_id', Auth::user()->id)->get();
-        return view('home', ['entreprises' => $entreprises]);
+        if ($entreprises->isEmpty()){
+            return view('home', ['entreprises' => $entreprises, 'vide' => 'Il n\'y a rien a afficher']);
+        }else{
+            return view('home', ['entreprises' => $entreprises]);
+        }
     }
-
+    //Homepage avec les candidatures à relancer du User
     public function relaunch(){
         $entreprises = Suivi::where([
             ['user_id', Auth::user()->id],
@@ -24,43 +28,71 @@ class HomeController extends Controller
             ['status', '=', 'encours'],
             ['response', '=', 'off'],
         ])->orderBy('relaunch')->get();
-        return view('home', ['entreprises' => $entreprises]);
+        if ($entreprises->isEmpty()){
+            return view('home', ['entreprises' => $entreprises, 'vide' => 'Il n\'y a rien a afficher']);
+        }else{
+            return view('home', ['entreprises' => $entreprises]);
+        }
     }
-
+    //Homepage avec les candidatures avec entretien du User
     public function interview(){
         $entreprises = Suivi::where('user_id', Auth::user()->id)->whereNotNull('interview_date')->orderBy('interview_date')->get();
-        return view('home', ['entreprises' => $entreprises]);
+        if ($entreprises->isEmpty()){
+            return view('home', ['entreprises' => $entreprises, 'vide' => 'Il n\'y a rien a afficher']);
+        }else{
+            return view('home', ['entreprises' => $entreprises]);
+        }
     }
+    //Homepage avec les candidatures à candidater du User
     public function candidate(){
         $entreprises = Suivi::where('user_id', Auth::user()->id)->whereNull('first_date')->get();
-        return view('home', ['entreprises' => $entreprises]);
+        if ($entreprises->isEmpty()){
+            return view('home', ['entreprises' => $entreprises, 'vide' => 'Il n\'y a rien a afficher']);
+        }else{
+            return view('home', ['entreprises' => $entreprises]);
+        }
     }
+    //Homepage avec les candidatures positive du User
     public function positive(){
         $entreprises = Suivi::where([
             ['user_id', Auth::user()->id],
             ['status', '=', 'positif'],
         ])->get();
-        return view('home', ['entreprises' => $entreprises]);
+        if ($entreprises->isEmpty()){
+            return view('home', ['entreprises' => $entreprises, 'vide' => 'Il n\'y a rien a afficher']);
+        }else{
+            return view('home', ['entreprises' => $entreprises]);
+        }
     }
+    //Homepage avec les candidatures negative du User
     public function negative(){
         $entreprises = Suivi::where([
             ['user_id', Auth::user()->id],
             ['status', '=', 'negatif'],
         ])->get();
-        return view('home', ['entreprises' => $entreprises]);
+        if ($entreprises->isEmpty()){
+            return view('home', ['entreprises' => $entreprises, 'vide' => 'Il n\'y a rien a afficher']);
+        }else{
+            return view('home', ['entreprises' => $entreprises]);
+        }
     }
+    //Homepage avec les candidatures en cours du User
     public function encours(){
         $entreprises = Suivi::where([
             ['user_id', Auth::user()->id],
             ['status', '=', 'encours'],
         ])->get();
-        return view('home', ['entreprises' => $entreprises]);
+        if ($entreprises->isEmpty()){
+            return view('home', ['entreprises' => $entreprises, 'vide' => 'Il n\'y a rien a afficher']);
+        }else{
+            return view('home', ['entreprises' => $entreprises]);
+        }
     }
-
+    //Page pour ajouter une candidature
     public function goToInsert(){
         return view('formulaire');
     }
-
+    //Création de la nouvelle candidature
     public function insert(Request $request){
         $validated = $request->validate([
             'ent_name' => 'required',
@@ -91,17 +123,15 @@ class HomeController extends Controller
         $suivi->response = $request->response ? 'on' : 'off';
         $suivi->status = $request->input('status');
 
-
         $suivi->save();
 
         return redirect()->route('homepage')->with('status', 'Création reussie');
-
     }
-
+    //Page pour modifier une candidature
     public function goToUpdate(Suivi $suivi){
         return view('update', ['suivi' => $suivi]);
     }
-
+    //Modification de la candidature
     public function updated(Suivi $suivi, Request $request){
         $validated = $request->validate([
             'ent_name' => 'required',
@@ -117,9 +147,21 @@ class HomeController extends Controller
 
         return redirect()->route('homepage')->with('status', 'Mise à jour réussie');
     }
-
+    //Suppression d'une candidature
     public function delete(Suivi $suivi){
         $suivi->delete();
         return redirect()->route('homepage')->with('status', 'Suppression réussie');
+    }
+    //Page Mentions légales
+    public function info(){
+        return view('info');
+    }
+    //Page protection des données
+    public function data(){
+        return view('data');
+    }
+    //Page apporter une amélioration
+    public function idea(){
+        return view('idea');
     }
 }

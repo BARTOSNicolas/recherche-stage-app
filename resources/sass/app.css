@@ -2,6 +2,7 @@
   height: 100vh;
   background-color: #f0f2f4;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -31,6 +32,7 @@
 }
 .background-login .auth fieldset .btn {
   margin-bottom: 16px;
+  display: inline-block;
 }
 .background-login .auth fieldset a {
   display: block;
@@ -45,6 +47,9 @@
 .background-login .auth fieldset .rgpd span {
   font-size: 12px;
   line-height: 12px;
+}
+.background-login .auth fieldset .remember {
+  margin-bottom: 16px;
 }
 
 .container {
@@ -94,7 +99,7 @@
 .mdl-navigation__link:hover::after {
   content: "";
   height: 20px;
-  background-image: url(../../public/caret.svg);
+  background-image: url(../../public/images/caret.svg);
   background-size: contain;
   background-position: center right;
   background-repeat: no-repeat;
@@ -131,6 +136,7 @@
 
 h1 {
   font-size: 36px;
+  padding-left: 10px;
 }
 
 .enterprise-card .card-title {
@@ -138,6 +144,17 @@ h1 {
   flex-direction: column;
   justify-content: flex-start;
   max-height: 100px;
+  position: relative;
+}
+.enterprise-card .card-title .mail-logo {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.enterprise-card .card-title .mail-logo img {
+  width: 100%;
 }
 .enterprise-card .card-title .title {
   align-self: flex-start;
@@ -172,6 +189,108 @@ h1 {
 }
 .enterprise-card .btn-delete {
   display: inline;
+}
+
+@keyframes rubberBand {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+.mdl-layout-title {
+  position: relative;
+}
+
+.nav-bottom {
+  position: absolute;
+  bottom: 0;
+}
+.nav-bottom ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+.nav-bottom ul li {
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+}
+.nav-bottom ul li a {
+  text-align: center;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.nav-bottom ul li a img {
+  padding-top: 10px;
+  height: 50%;
+}
+.nav-bottom ul li a:hover img {
+  animation: rubberBand 1000ms infinite;
+}
+.nav-bottom ul li a:focus {
+  outline: none;
+}
+
+.data-text, .info-text {
+  padding-top: 50px;
+  width: 50%;
+}
+
+.idea-text {
+  padding-top: 50px;
+}
+
+@media screen and (max-width: 1500px) {
+  .container {
+    padding: 0 25px;
+  }
+}
+@media screen and (max-width: 450px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  .mdl-grid {
+    padding: 10px;
+  }
+
+  .mdl-card {
+    width: 100%;
+  }
+
+  .enterprise-card .card-title {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .enterprise-card .card-title .title {
+    margin-right: 8px;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */

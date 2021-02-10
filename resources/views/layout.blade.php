@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-orange.min.css" />
     <link rel="stylesheet" href="{{ asset("css/app.css") }}">
 
-    <title>Recherche d'entreprises</title>
+    <title>Gère tes candidatures pour trouver un emploi ou un stage</title>
 </head>
 <body>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--fixed-header">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
-            <h1 class="mdl-textfield--align-left">Recherche d'entreprises</h1>
+            <h1 class="mdl-textfield--align-left">geretacandidature.fr</h1>
             <div class="mdl-layout-spacer"></div>
             <a href="{{ route('formulaire') }}" id="tt4"><button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
                     <i class="material-icons">add</i>
@@ -27,16 +27,34 @@
         </div>
     </header>
     <div class="mdl-layout__drawer">
-        <div class="mdl-layout-title"><span class="square">{{ substr(Auth::user()->name, 0,1) }}</span></div>
+        <div class="mdl-layout-title"><span class="square">{{ substr(Illuminate\Support\Facades\Auth::user()->name, 0,1) }}</span></div>
         <nav class="mdl-navigation">
             <a class="mdl-navigation__link" href="{{ route('homepage') }}">Toutes</a>
+            <hr>
             <a class="mdl-navigation__link" href="{{ route('candidate') }}">à candidater</a>
             <a class="mdl-navigation__link" href="{{ route('encours') }}">En cours</a>
             <a class="mdl-navigation__link" href="{{ route('relaunch') }}">à relancer</a>
             <a class="mdl-navigation__link" href="{{ route('positive') }}">Les positives</a>
             <a class="mdl-navigation__link" href="{{ route('interview') }}">Mes entretiens</a>
             <a class="mdl-navigation__link" href="{{ route('negative') }}">Les négatives</a>
+            <hr>
             <a class="mdl-navigation__link" href="{{ route('logout') }}">Déconnexion</a>
+        </nav>
+        <nav class="nav-bottom">
+            <ul>
+                <li><a href="{{ route('info') }}" id="ttinfo"><img src="{{asset('images/info-solid.svg')}}" alt="Information"></a></li>
+                <div class="mdl-tooltip mdl-tooltip--top" for="ttinfo">
+                    Mentions légales
+                </div>
+                <li><a href="{{ route('data') }}" id="ttdata"><img src="{{asset('images/lock-solid.svg')}}" alt="Protection des données"></a></li>
+                <div class="mdl-tooltip mdl-tooltip--top" for="ttdata">
+                    Protection des données
+                </div>
+                <li><a href="{{ route('idea') }}" id="ttidea"><img src="{{asset('images/lightbulb-solid.svg')}}" alt="Vous avez une idée"></a></li>
+                <div class="mdl-tooltip mdl-tooltip--top" for="ttidea">
+                    Envoyer ses idées
+                </div>
+            </ul>
         </nav>
     </div>
     <main class="mdl-layout__content">
