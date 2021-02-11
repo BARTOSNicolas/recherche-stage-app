@@ -63,9 +63,8 @@
 </div>
 
 
-
-<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 @yield('script')
 </body>

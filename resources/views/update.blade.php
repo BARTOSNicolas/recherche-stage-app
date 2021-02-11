@@ -9,14 +9,14 @@
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="entreprise" name="ent_name" value="{{ $suivi->entreprise->ent_name }}">
                     <label class="mdl-textfield__label" for="entreprise">Entreprise</label>
-                    @if($errors->has('name'))
+                    @if($errors->has('ent_name'))
                         <p>Nom pas valide</p>
                     @endif
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="city" name="ent_city" value="{{ $suivi->entreprise->ent_city }}">
                     <label class="mdl-textfield__label" for="city">Ville</label>
-                    @if($errors->has('city'))
+                    @if($errors->has('ent_city'))
                         <p>Ville pas valide</p>
                     @endif
                 </div>
