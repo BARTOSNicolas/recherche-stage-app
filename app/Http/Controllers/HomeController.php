@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function index(){
         $entreprises = Suivi::where('user_id', Auth::user()->id)->get();
         if ($entreprises->isEmpty()){
-            return view('home', ['entreprises' => $entreprises, 'vide' => 'Il n\'y a rien a afficher']);
+            return view('home', ['entreprises' => $entreprises, 'vide' => 'Vous n\'avez pas encore créé de fiche candidature.', 'btn' => true]);
         }else{
             return view('home', ['entreprises' => $entreprises]);
         }
@@ -29,16 +29,19 @@ class HomeController extends Controller
             ['response', '=', 'off'],
         ])->orderBy('relaunch')->get();
         if ($entreprises->isEmpty()){
-            return view('home', ['entreprises' => $entreprises, 'vide' => 'Il n\'y a rien a afficher']);
+            return view('home', ['entreprises' => $entreprises, 'vide' => 'Aucune entreprise à relancer !']);
         }else{
             return view('home', ['entreprises' => $entreprises]);
         }
     }
     //Homepage avec les candidatures avec entretien du User
     public function interview(){
-        $entreprises = Suivi::where('user_id', Auth::user()->id)->whereNotNull('interview_date')->orderBy('interview_date')->get();
+        $entreprises = Suivi::where('user_id', Auth::user()->id)->where([
+            ['interview_date', '!=', null],
+            ['interview_date', '>', date("Y-m-d")]
+        ])->orderBy('interview_date')->get();
         if ($entreprises->isEmpty()){
-            return view('home', ['entreprises' => $entreprises, 'vide' => 'Il n\'y a rien a afficher']);
+            return view('home', ['entreprises' => $entreprises, 'vide' => 'Aucun entretien à venir !']);
         }else{
             return view('home', ['entreprises' => $entreprises]);
         }
@@ -47,7 +50,7 @@ class HomeController extends Controller
     public function candidate(){
         $entreprises = Suivi::where('user_id', Auth::user()->id)->whereNull('first_date')->get();
         if ($entreprises->isEmpty()){
-            return view('home', ['entreprises' => $entreprises, 'vide' => 'Il n\'y a rien a afficher']);
+            return view('home', ['entreprises' => $entreprises, 'vide' => 'Vous n\'avez plus d\'entreprises à candidater!']);
         }else{
             return view('home', ['entreprises' => $entreprises]);
         }
@@ -59,7 +62,7 @@ class HomeController extends Controller
             ['status', '=', 'positif'],
         ])->get();
         if ($entreprises->isEmpty()){
-            return view('home', ['entreprises' => $entreprises, 'vide' => 'Il n\'y a rien a afficher']);
+            return view('home', ['entreprises' => $entreprises, 'vide' => 'Pas encore de réponses positive !']);
         }else{
             return view('home', ['entreprises' => $entreprises]);
         }
@@ -71,7 +74,7 @@ class HomeController extends Controller
             ['status', '=', 'negatif'],
         ])->get();
         if ($entreprises->isEmpty()){
-            return view('home', ['entreprises' => $entreprises, 'vide' => 'Il n\'y a rien a afficher']);
+            return view('home', ['entreprises' => $entreprises, 'vide' => 'Pas encore de réponses négative !']);
         }else{
             return view('home', ['entreprises' => $entreprises]);
         }
@@ -83,7 +86,7 @@ class HomeController extends Controller
             ['status', '=', 'encours'],
         ])->get();
         if ($entreprises->isEmpty()){
-            return view('home', ['entreprises' => $entreprises, 'vide' => 'Il n\'y a rien a afficher']);
+            return view('home', ['entreprises' => $entreprises, 'vide' => 'Vous n\'avez pas encore envoyer de candidature !']);
         }else{
             return view('home', ['entreprises' => $entreprises]);
         }
@@ -163,5 +166,36 @@ class HomeController extends Controller
     //Page apporter une amélioration
     public function idea(){
         return view('idea');
+    }
+
+    static function stats(){
+        $stats = [];
+        $stats['all'] = Suivi::where('user_id', Auth::user()->id)->count();
+        $stats['relaunch'] = Suivi::where([
+            ['user_id', Auth::user()->id],
+            ['relaunch', '=', null],
+            ['first_date', '!=', null],
+            ['status', '=', 'encours'],
+            ['response', '=', 'off'],
+        ])->orderBy('relaunch')->count();
+        $stats['interview'] = Suivi::where('user_id', Auth::user()->id)->where([
+            ['interview_date', '!=', null],
+            ['interview_date', '>', date("Y-m-d")]
+        ])->orderBy('interview_date')->count();
+        $stats['positive'] = Suivi::where([
+            ['user_id', Auth::user()->id],
+            ['status', '=', 'positif'],
+        ])->count();
+        $stats['negative'] = Suivi::where([
+            ['user_id', Auth::user()->id],
+            ['status', '=', 'negatif'],
+        ])->count();
+        $stats['encours'] = Suivi::where([
+            ['user_id', Auth::user()->id],
+            ['status', '=', 'encours'],
+        ])->count();
+        $stats['candidate']  = Suivi::where('user_id', Auth::user()->id)->whereNull('first_date')->count();
+
+        return $stats;
     }
 }

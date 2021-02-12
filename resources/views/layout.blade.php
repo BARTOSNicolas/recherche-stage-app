@@ -29,14 +29,14 @@
     <div class="mdl-layout__drawer">
         <div class="mdl-layout-title"><span class="square">{{ substr(Illuminate\Support\Facades\Auth::user()->name, 0,1) }}</span></div>
         <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="{{ route('homepage') }}">Toutes</a>
+            <a class="mdl-navigation__link" href="{{ route('homepage') }}"><span class="mdl-badge " data-badge="{{\App\Http\Controllers\HomeController::stats()['all']}}">Toutes</span></a>
             <hr>
-            <a class="mdl-navigation__link" href="{{ route('candidate') }}">à candidater</a>
-            <a class="mdl-navigation__link" href="{{ route('encours') }}">En cours</a>
-            <a class="mdl-navigation__link" href="{{ route('relaunch') }}">à relancer</a>
-            <a class="mdl-navigation__link" href="{{ route('positive') }}">Les positives</a>
-            <a class="mdl-navigation__link" href="{{ route('interview') }}">Mes entretiens</a>
-            <a class="mdl-navigation__link" href="{{ route('negative') }}">Les négatives</a>
+            <a class="mdl-navigation__link" href="{{ route('candidate') }}"><span class="mdl-badge " data-badge="{{\App\Http\Controllers\HomeController::stats()['candidate']}}">à candidater</span></a>
+            <a class="mdl-navigation__link" href="{{ route('encours') }}"><span class="mdl-badge " data-badge="{{\App\Http\Controllers\HomeController::stats()['encours']}}">En cours</span></a>
+            <a class="mdl-navigation__link" href="{{ route('relaunch') }}"><span class="mdl-badge " data-badge="{{\App\Http\Controllers\HomeController::stats()['relaunch']}}">à relancer</span></a>
+            <a class="mdl-navigation__link" href="{{ route('positive') }}"><span class="mdl-badge " data-badge="{{\App\Http\Controllers\HomeController::stats()['positive']}}">Les positives</span></a>
+            <a class="mdl-navigation__link" href="{{ route('interview') }}"><span class="mdl-badge " data-badge="{{\App\Http\Controllers\HomeController::stats()['interview']}}">Mes entretiens</span></a>
+            <a class="mdl-navigation__link" href="{{ route('negative') }}"><span class="mdl-badge " data-badge="{{\App\Http\Controllers\HomeController::stats()['negative']}}">Les négatives</span></a>
             <hr>
             <a class="mdl-navigation__link" href="{{ route('logout') }}">Déconnexion</a>
         </nav>

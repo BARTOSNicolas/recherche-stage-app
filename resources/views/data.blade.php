@@ -3,11 +3,13 @@
 @section('content')
     <div class="container">
         <div class="data-text">
+            <h2>Données personnelles</h2>
+
             <p>Les informations recueillies sur les formulaires sont enregistrées dans un fichier informatisé par BARTOS Nicolas pour la gestion et l'organisation du site.</p>
 
             <p>Les données collectées ne seront pas communiquées.</p>
 
-            <p>Les données sont conservées pendant une durée de 1ans.</p>
+            <p>Les données sont conservées pendant une durée de 1ans dès la fin d'utilisation du service.</p>
 
             <p>Vous pouvez accéder aux données vous concernant, les rectifier, demander leur effacement ou exercer votre droit à la limitation du traitement de vos données. Vous pouvez retirer à tout moment votre consentement au traitement de vos données.</p>
 

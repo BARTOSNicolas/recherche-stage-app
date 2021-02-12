@@ -4,7 +4,14 @@
     <div class="container">
         <div class="mdl-grid">
             @if(isset($vide))
+                <div class="btn-candidate">
                 <p>{{$vide}}</p>
+                @if(isset($btn))
+                        <a href="{{ route('formulaire') }}">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Nouvelle candidature</button>
+                        </a>
+                @endif
+                </div>
             @endif
             @foreach($entreprises as $compagny)
             <div class="enterprise-card mdl-cell mdl-cell--3-col mdl-cell--6-col-tablet mdl-cell--12-col-phone">
@@ -37,13 +44,27 @@
                         <a href="{{ route('update', $compagny->id) }}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                             Modifier
                         </a>
-                        <form action="{{ route('delete', $compagny->id) }}" method="POST" class="btn-delete">
-                            @method('DELETE')
-                            @csrf
-                            <button type="submit" onClick="return confirm('Etes-vous sûr')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                                supprimer
-                            </button>
-                        </form>
+                        <div class="btn-delete">
+                            <button id="show-dialog-{{$compagny->id}}" onclick="showDialog({{$compagny->id}})" type="button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Supprimer</button>
+                            <dialog class="mdl-dialog" id="delete-dialog-{{$compagny->id}}">
+                                <h4 class="mdl-dialog__title">Voulez-vous vraiment supprimer?</h4>
+                                <div class="mdl-dialog__content">
+                                    <p>
+                                        Les informations que vous allez supprimer ne pourront plus être récupérés.
+                                    </p>
+                                </div>
+                                <div class="mdl-dialog__actions">
+                                    <form action="{{ route('delete', $compagny->id) }}" method="POST" class="btn-delete">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn-red mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                            supprimer
+                                        </button>
+                                    </form>
+                                    <button type="button" class="mdl-button close mdl-button--colored mdl-js-button mdl-js-ripple-effect">Annuler</button>
+                                </div>
+                            </dialog>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,10 +90,24 @@
                 notification.MaterialSnackbar.showSnackbar(
                     {
                         message: '{{ session('status') }}',
-                        timeout: 5000
+                        timeout: 4000
                     }
                 );
             }
+        }
+        function showDialog(id) {
+            let dialog = document.querySelector('#delete-dialog-'+id);
+            let showDialogButton = document.querySelector('#show-dialog-'+id);
+            if (!dialog.showModal) {
+                dialogPolyfill.registerDialog(dialog);
+            }
+            // showDialogButton.addEventListener('click', function () {
+            //     dialog.showModal();
+            // });
+            dialog.showModal();
+            dialog.querySelector('.close').addEventListener('click', function () {
+                dialog.close();
+            });
         }
     </script>
 @endsection

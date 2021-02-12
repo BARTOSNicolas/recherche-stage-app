@@ -66,8 +66,8 @@
                     </label>
                 </div>
                 <div>
-                    <label class="radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="encours">
-                        <input type="radio" id="encours" class="mdl-radio__button" name="status" value="afaire" {{ $suivi->status == "afaire"? "checked" : 'checked' }}>
+                    <label class="radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="afaire">
+                        <input type="radio" id="afaire" class="mdl-radio__button" name="status" value="afaire" {{ $suivi->status == "afaire"? "checked" : 'checked' }}>
                         <span class="mdl-radio__label">A faire</span>
                     </label>
                     <label class="radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="encours">

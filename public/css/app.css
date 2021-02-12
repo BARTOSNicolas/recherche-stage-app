@@ -85,10 +85,15 @@
   font-size: 50px;
   font-weight: bold;
   border-radius: 4px;
+  text-transform: uppercase;
 }
 
 .mdl-navigation__link {
   text-transform: uppercase;
+}
+.mdl-navigation__link .mdl-badge[data-badge]:after {
+  left: -30px;
+  top: -5px;
 }
 .mdl-navigation__link::after {
   content: "";
@@ -99,7 +104,7 @@
 .mdl-navigation__link:hover::after {
   content: "";
   height: 20px;
-  background-image: url(/images/caret.svg?16b626e6cc4a3f1bcace9d433fb39d08);
+  background-image: url(/images/caret.svg?010f1e193f28f2e013189b18438de60a);
   background-size: contain;
   background-position: center right;
   background-repeat: no-repeat;
@@ -281,6 +286,14 @@ h1 {
 
 .idea-text {
   padding-top: 50px;
+}
+
+.btn-candidate {
+  display: block;
+}
+
+#snackbar {
+  background-color: darkgreen;
 }
 
 @media screen and (max-width: 1500px) {

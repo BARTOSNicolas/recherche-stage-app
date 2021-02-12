@@ -8,14 +8,14 @@
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="entreprise" name="ent_name" value="{{ old('ent_name') }}">
                 <label class="mdl-textfield__label" for="entreprise">Entreprise</label>
-                @if($errors->has('entreprise'))
+                @if($errors->has('ent_name'))
                     <p>Nom pas valide</p>
                 @endif
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="city" name="ent_city" value="{{ old('ent_city') }}">
                 <label class="mdl-textfield__label" for="city">Ville</label>
-                @if($errors->has('city'))
+                @if($errors->has('ent_city'))
                     <p>Ville pas valide</p>
                 @endif
             </div>
@@ -65,8 +65,8 @@
                 </label>
             </div>
             <div>
-                <label class="radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="encours">
-                    <input type="radio" id="encours" class="mdl-radio__button" name="status" value="afaire" {{ old('status') == "afaire"? "checked" : 'checked' }}>
+                <label class="radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="afaire">
+                    <input type="radio" id="afaire" class="mdl-radio__button" name="status" value="afaire" {{ old('status') == "afaire"? "checked" : 'checked' }}>
                     <span class="mdl-radio__label">A faire</span>
                 </label>
                 <label class="radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="encours">

@@ -28,10 +28,15 @@
         font-size: 50px;
         font-weight: bold;
         border-radius: 4px;
+        text-transform: uppercase;
     }
 }
 .mdl-navigation__link{
     text-transform: uppercase;
+    .mdl-badge[data-badge]:after{
+        left: -30px;
+        top: -5px;
+    }
 
     &::after{
         content: "";
@@ -214,6 +219,12 @@ h1{
 }
 .idea-text{
     padding-top: 50px;
+}
+.btn-candidate{
+    display: block;
+}
+#snackbar{
+    background-color: darkgreen;
 }
 
 @media screen and (max-width: 1500px){
