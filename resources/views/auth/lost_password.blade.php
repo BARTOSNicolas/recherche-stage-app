@@ -2,30 +2,23 @@
 
 @section('content')
     <div class="background-login">
-        <h1>Attention alzheimer te guette ! </h1>
+        <h1 class="title">Attention alzheimer te guette ! </h1>
         <form class="auth" action="{{route('request_password')}}" method="POST">
-            <fieldset>
-                <legend>Tu as perdu ton mot de passe ?</legend>
+            <fieldset class="z-depth-2">
+                <legend class="z-depth-2">Tu as perdu ton mot de passe ?</legend>
                 @csrf
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="email" name="email" value="{{ old('name') }}">
-                    <label class="mdl-textfield__label" for="email">Nom d'utilisateur</label>
+                <div class="input-field">
+                    <input id="email" type="text" class="validate" name="email" value="{{ old('email') }}">
+                    <label for="email">Adresse mail</label>
                     @error('email')
-                    <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                        <span class="helper-text" data-error="wrong">{{$message}}</span>
                     @enderror
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
                 </div>
                 <div>
-                    <button type="submit" class="btn mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-                        Valider
+                    <button type="submit" class="create-btn waves-effect waves-light btn">
+                        Envoyer
                     </button>
-                    <a href="{{ route('login') }}" class="btn mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                    <a href="{{ route('login') }}" class="create-btn waves-effect waves-light btn">
                         Annuler
                     </a>
                 </div>

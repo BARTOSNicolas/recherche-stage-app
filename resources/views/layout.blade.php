@@ -43,6 +43,7 @@
         <li><a href="{{ route('interview') }}"><span class="badge">{{\App\Http\Controllers\HomeController::stats()['interview']}}</span>Mes entretiens</a></li>
         <li><a href="{{ route('negative') }}"><span class="badge">{{\App\Http\Controllers\HomeController::stats()['negative']}}</span>Les négatives</a></li>
         <hr>
+        <li><a href="{{ route('recherche') }}">Recherche un emploi</a></li>
         <li><a href="{{ route('logout') }}">Me déconnecter</a></li>
     </div>
         <ul class="submenu">

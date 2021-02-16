@@ -1858,7 +1858,11 @@ $(document).ready(function () {
 
   $('.modal').modal(); //DatePicker
 
-  $('.datepicker').datepicker();
+  $('.datepicker').datepicker(); //FormSelect
+
+  $('select').formSelect(); //Collapsible
+
+  $('.collapsible').collapsible();
 });
 
 /***/ }),

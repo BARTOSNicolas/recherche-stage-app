@@ -5,7 +5,7 @@
         <div class="mdl-grid">
             @if(isset($vide))
                 <div class="btn-candidate">
-                <p>{{$vide}}</p>
+                    <p>{{$vide}}</p>
                 </div>
             @endif
             <div class="card-container">
@@ -42,6 +42,10 @@
                             <p class="card-contact name">{{ $suivi->entreprise->ent_contact_name }}</p>
                             <p class="card-contact phone">{{ $suivi->entreprise->ent_phone }}</p>
                             <a class="card-contact mail" href="mailto::{{ $suivi->entreprise->ent_mail }}">{{ $suivi->entreprise->ent_mail }}</a>
+                            <p class="card-contact candidate">Candidaté le : {{ $suivi->first_date }}</p>
+                            <p class="card-contact relance">Relancé le : {{ $suivi->relaunch }}</p>
+                            <p class="card-contact interview">Entretien le : {{ $suivi->interview_date }}</p>
+
                         </div>
                         <div class="card-action">
                             <a class="waves-effect waves-teal btn-flat modal-trigger" href="#modalUpdate{{$suivi->id}}">Mofifier</a> <!-- Modal Trigger -->
@@ -126,12 +130,12 @@
                                         <div class="input-field">
                                             <i class="material-icons prefix">today</i>
                                             <input type="text" id="relance{{$suivi->id}}" class="datepicker" name="relaunch" value="{{ $suivi->relaunch }}">
-                                            <label for="relance{{$suivi->id}}">Date de la candidature</label>
+                                            <label for="relance{{$suivi->id}}">Date de la relance</label>
                                         </div>
                                         <div class="input-field">
                                             <i class="material-icons prefix">today</i>
                                             <input type="text" id="interview{{$suivi->id}}" class="datepicker" name="interview_date" value="{{ $suivi->interview_date }}">
-                                            <label for="interview{{$suivi->id}}">Date de la candidature</label>
+                                            <label for="interview{{$suivi->id}}">Date de l'entretien'</label>
                                         </div>
                                         <div class="switch">
                                             <label>
@@ -177,14 +181,6 @@
             @endforeach
             </div>
         </div>
-
-        @if(session('status'))
-            <div id="snackbar" aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
-                <div class="mdl-snackbar__text"></div>
-                <button type="button" class="mdl-snackbar__action"></button>
-            </div>
-        @endif
-
     </div>
     <div class="tap">
         <a id="menu"  href="{{ route('formulaire') }}" class="waves-effect waves-light btn btn-floating pulse" ><i class="material-icons">add</i></a>

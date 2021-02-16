@@ -2,43 +2,46 @@
 
 @section('content')
     <div class="background-login">
-        <h1>Pret à gérer toutes tes candidatures ?</h1>
+        <h1 class="title">Pret à gérer toutes tes candidatures ?</h1>
         <form class="auth" action="{{ route('created_user') }}" method="POST">
             @csrf
-            <fieldset>
-                <legend>Créer ton compte</legend>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="name" name="name" value="{{ old('name') }}">
-                    <label class="mdl-textfield__label" for="name">Nom d'utilisateur</label>
+            <fieldset class="z-depth-2">
+                <legend class="z-depth-2">Créer ton compte</legend>
+                <div class="input-field">
+                    <input id="name" type="text" class="validate" name="name" value="{{ old('name') }}">
+                    <label for="name">Nom d'utilisateur</label>
+                    @error('name')
+                    <span class="helper-text" data-error="wrong">{{$message}}</span>
+                    @enderror
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="mail" id="email" name="email" value="{{ old('email') }}">
-                    <label class="mdl-textfield__label" for="email">Mail</label>
+                <div class="input-field">
+                    <input id="email" type="text" class="validate" name="email" value="{{ old('email') }}">
+                    <label for="email">Adresse mail</label>
+                    @error('email')
+                    <span class="helper-text" data-error="wrong">{{$message}}</span>
+                    @enderror
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="password" id="password" name="password">
-                    <label class="mdl-textfield__label" for="password">Mot de passe</label>
+                <div class="input-field">
+                    <input id="password" type="text" class="validate" name="password" value="{{ old('password') }}">
+                    <label for="password">Mot de passe</label>
+                    @error('password')
+                    <span class="helper-text" data-error="wrong">{{$message}}</span>
+                    @enderror
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="password" id="password_confirmation" name="password_confirmation">
-                    <label class="mdl-textfield__label" for="password_confirmation">Vérifier Mot de passe</label>
+                <div class="input-field">
+                    <input id="password_confirmation" type="text" class="validate" name="password_confirmation" value="{{ old('password_confirmation') }}">
+                    <label for="password_confirmation">Confirmation du mot de passe</label>
+                    @error('password_confirmation')
+                    <span class="helper-text" data-error="wrong">{{$message}}</span>
+                    @enderror
                 </div>
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                <button type="submit" class="btn mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                <button type="submit" class="create-btn waves-effect waves-light btn">
                     Créer
                 </button>
-                <a href="{{ route('login') }}" class="btn mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Annuler</a>
+                <a href="{{ route('login') }}" class="create-btn waves-effect waves-light btn">Annuler</a>
                 <label class="rgpd mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="rgpd">
-                    <input type="checkbox" id="rgpd" class="mdl-checkbox__input" name="rgpd" value="yes">
-                    <span class=" mdl-checkbox__label">J'autorise geretacandidature.fr a sauvegarder mes informations personnelles.</span>
+                    <input type="checkbox" id="rgpd" name="rgpd" {{ old('rgpd') == 'on' ? 'checked' : '' }}>
+                    <span class=" mdl-checkbox__label">J'autorise candidate.fr a sauvegarder mes informations personnelles.</span>
                 </label>
             </fieldset>
         </form>

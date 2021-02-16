@@ -12,7 +12,6 @@
                     @error('ent_name')
                     <span class="helper-text" data-error="wrong">{{$message}}</span>
                     @enderror
-
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix">create</i>

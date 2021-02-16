@@ -21,5 +21,11 @@ $(document).ready(function(){
     //DatePicker
     $('.datepicker').datepicker();
 
+    //FormSelect
+    $('select').formSelect();
+
+    //Collapsible
+    $('.collapsible').collapsible();
+
 });
 

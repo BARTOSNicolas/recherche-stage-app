@@ -1,0 +1,17 @@
+.recherche{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .search-name{
+        width: 48%;
+    }
+    .search-city{
+        width: 48%;
+
+    }
+    .search-range{
+        width: 48%;
+
+    }
+
+}

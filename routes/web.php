@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\LoginController;
 use \App\Http\Controllers\HomeController;
+use \App\Http\Controllers\SearchController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,3 +48,6 @@ Route::delete('/effacement/{suivi}', [HomeController::class, 'delete'])->name('d
 Route::get('/information', [HomeController::class, 'info'])->name('info');
 Route::get('/protectiondesdonnees', [HomeController::class, 'data'])->name('data');
 Route::get('/envoyersonidee', [HomeController::class, 'idea'])->name('idea');
+//Recherche
+Route::get('/recherche', [SearchController::class, 'index'])->name('recherche')->middleware('auth');
+Route::post('/recherche', [SearchController::class, 'list'])->name('recherche')->middleware('auth');

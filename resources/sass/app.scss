@@ -1,6 +1,8 @@
-@import "login";
 @import "variables";
+
+@import "login";
 @import "homepage";
+@import "recherche";
 //LAYOUT
 header, main, footer {
     padding-left: 300px;
@@ -104,8 +106,10 @@ header{
         background-color: FireBrick;
     }
 }
-.input-field .helper-text{
+.input-field .helper-text, .helper-text{
     color: FireBrick;
+    display: block;
+    margin-bottom: 8px;
 }
 
 
