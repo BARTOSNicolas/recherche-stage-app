@@ -1,0 +1,140 @@
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+
+    .card{
+        width: 23%;
+        margin-left: 1%;
+        margin-right: 1%;
+        .card-image{
+            height: 150px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            .more{
+                position: absolute;
+                right: 16px;
+                top: 16px;
+                color: white;
+            }
+            .reponse{
+                position: absolute;
+                top: 16px;
+                left: 16px;
+                color: white;
+            }
+            .card-title{
+                text-transform: uppercase;
+                position: static;
+                margin: 0;
+                width: 100%;
+                vertical-align: bottom;
+                padding-bottom: 8px;
+                font-weight: bold;
+                color: white;
+            }
+            .card-subtitle{
+                margin: 0;
+                padding: 0 24px;
+                padding-bottom: 24px;
+                color: white;
+                font-style: italic;
+            }
+        }
+        .card-content{
+            min-height: 136px;
+            .card-desc-cut{
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+        }
+        .card-reveal{
+            .card-title{
+                border-bottom: 1px solid black;
+                margin-bottom: 16px;
+                text-transform: uppercase;
+            }
+            .card-desc{
+                margin: 0;
+                margin-bottom: 8px;
+            }
+            .card-contact{
+                margin: 0;
+                margin-bottom: 8px;
+            }
+        }
+        .card-action{
+            display: flex;
+            justify-content: space-evenly;
+            padding: 0;
+            height: 50px;
+            align-items: center;
+            a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating){
+                margin: 0;
+                padding: 0 12px;
+            }
+        }
+        @media screen and (max-width: 1400px){
+            width: 31%;
+        }
+        @media screen and (max-width: 992px){
+            width: 31%;
+        }
+        @media screen and (max-width: 770px){
+            width: 48%;
+        }
+        @media screen and (max-width: 600px){
+            width: 98%;
+        }
+
+    }
+
+}
+
+.tap {
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+    z-index: 299;
+
+    .tap-target {
+        background-color: $app-color-pdark;
+        color: white;
+    }
+
+    .tap-target-wrapper {
+        right: -338px !important;
+    }
+
+    .btn-floating {
+        width: 60px;
+        height: 60px;
+        line-height: 72px;
+    }
+}
+.modal{
+    padding: 16px 16px 0px 16px;
+    .modal-title{
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .modal-subtitle{
+        font-style: italic;
+    }
+    .form-delete{
+        display: inline;
+    }
+}
+.modalUpdate{
+    width: 80%;
+    max-height: 90%;
+}
+
+@media screen and (max-width: 600px) {
+    .tap .tap-target-wrapper {
+        right: -238px !important;
+    }
+}

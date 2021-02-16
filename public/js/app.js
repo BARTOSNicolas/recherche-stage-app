@@ -1842,6 +1842,25 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$(document).ready(function () {
+  var instance = $('.sidenav').sidenav();
+  var tap = $('.tap-target').tapTarget();
+  $('.tap').mouseenter(function () {
+    $('.tap-target').tapTarget('open');
+  });
+  $('.tap').mouseleave(function () {
+    setTimeout(function () {
+      $('.tap-target').tapTarget('close');
+    }, 500);
+  }); //Tooltip
+
+  $('.tooltipped').tooltip(); //Modal
+
+  $('.modal').modal(); //DatePicker
+
+  $('.datepicker').datepicker();
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

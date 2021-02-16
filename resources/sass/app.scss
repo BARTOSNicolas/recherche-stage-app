@@ -1,255 +1,111 @@
 @import "login";
-
-.container{
-    max-width: 1200px;
-    margin: 0 auto;
+@import "variables";
+@import "homepage";
+//LAYOUT
+header, main, footer {
+    padding-left: 300px;
 }
-.mdl-grid{
-    padding: 50px;
+hr{
+    margin: 0;
 }
-.mdl-layout__header-row{
-    padding: 40px!important;
-}
-.mdl-button--fab:hover{
-    box-shadow: 0 1px 10px 0 rgb(0 0 0 / 25%), 0 1px 10px 0 rgb(0 0 0 / 35%);
-}
-.mdl-layout__drawer>.mdl-layout-title{
-    background-color: #392063;
-    height: 80px;
-    color: white;
-    padding-top: 10px;
-    .square{
-        text-align: center;
-        display: block;
-        height: 60px;
-        width: 60px;
-        line-height: 60px;
-        background-color: #ffAB40;
-        font-size: 50px;
-        font-weight: bold;
-        border-radius: 4px;
-        text-transform: uppercase;
+header{
+    .navbar-fixed nav{
+        right: 0;
+        background-color: $app-color-pdark;
     }
-}
-.mdl-navigation__link{
-    text-transform: uppercase;
-    .mdl-badge[data-badge]:after{
-        left: -30px;
-        top: -5px;
-    }
-
-    &::after{
-        content: "";
-        padding-left: 0px;
-        opacity: 0;
-        transition: 500ms;
-    }
-    &:hover::after{
-        content: "";
-        height: 20px;
-        background-image: url(../../public/images/caret.svg);
-        background-size: contain;
-        background-position: center right;
-        background-repeat: no-repeat;
-        padding-left: 20px;
-        opacity: 100;
-        color: #757575;
-    }
-}
-.mdl-card{
-    max-width: 100%;
-    height: 100%;
-    justify-content: space-between;
-    border-radius: 4px;
-}
-.top{
-    .mdl-textfield{
-        width: 90%;
-    }
-}
-.middle, .bottom{
-    .mdl-textfield{
-        display: block;
-        width: 90%;
-    }
-    .slider{
-        margin-bottom: 16px;
-    }
-    .radio{
-        margin-right: 16px;
-    }
-}
-.bottom .mdl-textfield__input{
-    text-align: right;
-}
-
-h1{
-    font-size: 36px;
-    padding-left: 10px;
-}
-
-.enterprise-card{
-    .card-title{
+    .sidenav{
+        background-color: $app-color-grey;
+        box-shadow: 3px 0 5px rgba(0,0,0,0.35);
+        z-index: 90;
+        padding-top: 64px;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-        max-height: 100px ;
-        position: relative;
-
-        .mail-logo{
-            height: 20px;
-            width: 20px;
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            img{
-                width: 100%;
+        justify-content: space-between;
+        .profil{
+            height: 200px;
+            background-color: $app-color-plight;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            border-bottom: 5px solid $app-color-pdark;
+            .bvn{
+                margin: 0;
+                padding: 0 32px;
+                font-size: 20px;
+            }
+            .auth-name{
+                margin: 0;
+                padding: 0 32px;
+                padding-bottom: 16px;
+                font-size: 24px;
+                font-weight: bold;
             }
         }
-
-        .title{
-            align-self: flex-start;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            text-transform: uppercase;
+        .badge{
+            color:$app-color-primary;
         }
-        .subtitle{
-            align-self: flex-start;
-            font-style: italic;
-            margin: 0;
-            color: white;
-        }
-    }
-    .mdl-card__supporting-text{
-        height: 100%;
-    }
-    .mail, .contact, .phone{
-        display: block;
-        margin-bottom: 8px;
-    }
-    .contact{
-        font-weight: bold;
-    }
-    .desc{
-        overflow: auto;
-        max-height: 150px;
-
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 5;
-        -webkit-box-orient: vertical;
-    }
-    .btn-delete{
-        display: inline;
-    }
-}
-@keyframes rubberBand {
-    from {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-    }
-
-    30% {
-        -webkit-transform: scale3d(1.25, 0.75, 1);
-        transform: scale3d(1.25, 0.75, 1);
-    }
-
-    40% {
-        -webkit-transform: scale3d(0.75, 1.25, 1);
-        transform: scale3d(0.75, 1.25, 1);
-    }
-
-    50% {
-        -webkit-transform: scale3d(1.15, 0.85, 1);
-        transform: scale3d(1.15, 0.85, 1);
-    }
-
-    65% {
-        -webkit-transform: scale3d(0.95, 1.05, 1);
-        transform: scale3d(0.95, 1.05, 1);
-    }
-
-    75% {
-        -webkit-transform: scale3d(1.05, 0.95, 1);
-        transform: scale3d(1.05, 0.95, 1);
-    }
-
-    to {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-    }
-}
-.mdl-layout-title{
-    position: relative;
-}
-.nav-bottom{
-    position: absolute;
-    bottom: 0;
-    ul{
-        list-style: none;
-        display: flex;
-        flex-direction: row;
-        li{
-            height: 50px;
-            width: 50px;
-            overflow: hidden;
-            a{
-                text-align: center;
-                display: block;
-                height: 100%;
-                width: 100%;
-                img{
-                    padding-top: 10px;
-                    height: 50%;
-                }
-                &:hover img{
-                    animation: rubberBand 1000ms infinite;
-                }
-                &:focus{
-                    outline: none;
+        .submenu{
+            display: flex;
+            li{
+                a{
+                    &:hover {
+                        background-color: transparent;
+                        .material-icons{
+                            animation: rubberBand 750ms infinite;
+                        }
+                    }
+                    .material-icons{
+                        font-size: 36px;
+                        color: $app-color-primary;
+                    }
                 }
             }
         }
     }
 }
-.data-text, .info-text,{
-    padding-top: 50px;
-    width: 50%;
-}
-.idea-text{
-    padding-top: 50px;
-}
-.btn-candidate{
-    display: block;
-}
-#snackbar{
-    background-color: darkgreen;
-}
 
-@media screen and (max-width: 1500px){
+@media only screen and (max-width : 992px) {
+    header, main, footer {
+        padding-left: 0;
+    }
+    header .sidenav{
+        padding-top: 0;
+        z-index: 999;
+    }
+}
 .container{
-    padding: 0 25px;
+    width: 90%;
 }
-}
-@media screen and (max-width: 450px){
-    h1{
-        font-size: 24px;
-    }
-    .mdl-grid{
-        padding: 10px;
-    }
-    .mdl-card{
-        width:100%;
-    }
-    .enterprise-card{
-        .card-title{
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            .title{
-                margin-right: 8px;
-            }
-        }
+.switch{
+    margin-bottom: 16px;
+    label{
+        font-size: 16px;
+        color: black;
     }
 }
+.radio{
+    padding-top: 16px;
+    label{
+        position: initial;
+        color: black;
+    }
+}
+#toast-container{
+    right: 33%;
+    top: unset;
+    bottom: 5%;
+    .toast{
+        background-color: #30B349;
+        padding: 10px 50px;
+        box-shadow: 0 8px 17px 2px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%), 0 5px 5px -3px rgb(0 0 0 / 20%);
+        right: 0;
+    }
+    .toast-error{
+        background-color: FireBrick;
+    }
+}
+.input-field .helper-text{
+    color: FireBrick;
+}
+
+
