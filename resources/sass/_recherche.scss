@@ -2,16 +2,42 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    .search-name{
-        width: 48%;
+    .search-poste{
+        width: 100%;
+        margin: 0 12px;
     }
     .search-city{
-        width: 48%;
+        width: 100%;
 
     }
     .search-range{
-        width: 48%;
+        width: 100%;
+        label{
+            display: block;
+        }
+        input{
+            width: 70%;
+            margin-right: 16px ;
+        }
+    }
+    .search-partenaire{
+        margin: 12px;
+
+        label{
+            color: black;
+        }
 
     }
-
+    .autoDisable{
+        width: 100%;
+        margin: 0 12px;
+    }
+    .dropdown-content{
+        max-height: 500px;
+    }
+}
+.result{
+    .list-card{
+        margin-bottom: 8px;
+    }
 }

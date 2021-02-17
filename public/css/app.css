@@ -236,14 +236,39 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.recherche .search-name {
-  width: 48%;
+.recherche .search-poste {
+  width: 100%;
+  margin: 0 12px;
 }
 .recherche .search-city {
-  width: 48%;
+  width: 100%;
 }
 .recherche .search-range {
-  width: 48%;
+  width: 100%;
+}
+.recherche .search-range label {
+  display: block;
+}
+.recherche .search-range input {
+  width: 70%;
+  margin-right: 16px;
+}
+.recherche .search-partenaire {
+  margin: 12px;
+}
+.recherche .search-partenaire label {
+  color: black;
+}
+.recherche .autoDisable {
+  width: 100%;
+  margin: 0 12px;
+}
+.recherche .dropdown-content {
+  max-height: 500px;
+}
+
+.result .list-card {
+  margin-bottom: 8px;
 }
 
 header, main, footer {

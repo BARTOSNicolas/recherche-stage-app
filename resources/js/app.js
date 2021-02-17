@@ -26,6 +26,14 @@ $(document).ready(function(){
 
     //Collapsible
     $('.collapsible').collapsible();
+    //Auto complete
+    require('./autocomplete');
+
+    let range = document.getElementById('distance');
+    range.addEventListener('input', function (){
+        $('#rangeValue').text(range.value + ' km');
+    }, false)
+
 
 });
 

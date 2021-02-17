@@ -9,19 +9,40 @@ use Illuminate\Support\Facades\Http;
 class SearchController extends Controller
 {
     private $departs;
+    private $tokenPE;
     public function __construct(){
         $file = 'departements.json';
         $data = file_get_contents($file);
         $this->departs = json_decode($data);
+        $this->tokenPE = $this->getToken();
+
     }
     public function index(){
         return view('recherche', ['departs' => $this->departs]);
     }
-
-    public function list(Request $request){
-        $motsclefs = str_replace(' ', '%20', $request->motsclefs);
-        $dept = $request->dept;
-
+//    public function getCity(){
+//        $city = new Client();
+//        $res = $city->request('GET', 'https://api.emploi-store.fr/partenaire/offresdemploi/v2/referentiel/communes', [
+//            'verify' => false,
+//            'stream' => true,
+//            'headers' => ['Authorization' => 'Bearer '. $this->tokenPE->access_token],
+//        ]);
+//        dd($res->getBody()->getContents());
+//
+//    }
+    public function getCityCode($input){
+        $file = 'city.json';
+        $data = file_get_contents($file);
+        $cities = json_decode($data, true);
+            foreach ($cities as $city){
+                if($city['libelle'] === $input){
+                    $codeCity= $city['code'];
+                    break;
+                }
+            }
+        return $codeCity;
+    }
+    private function getToken(){
         $client = new Client();
         $response = $client->request('POST', 'https://entreprise.pole-emploi.fr/connexion/oauth2/access_token?realm=/partenaire', [
             'stream' => true,
@@ -34,12 +55,28 @@ class SearchController extends Controller
                 'scope'=>'application_'.env('PE_ID').' api_offresdemploiv2 o2dsoffre'
             ]
         ]);
-        $token = json_decode($response->getBody());
+        return json_decode($response->getBody());
+    }
+
+    public function list(Request $request){
+        $validated = $request->validate([
+            'motsCles' => 'required',
+            'city' => 'required',
+        ]);
+
+        $motsCles = str_replace(' ', '%20', $request->motsCles);
+        $distance = $request->distance;
+        $city = $this->getCityCode($request->city);
+        if($request->has('partenaires')){
+            $partenaire = 'INCLUS';
+        }else{
+            $partenaire = 'EXCLU';
+        }
         $search = new Client();
-        $list = $search->request('GET', 'https://api.emploi-store.fr/partenaire/offresdemploi/v2/offres/search?departement='.$dept.'&motsCles='.$motsclefs.'', [
+        $list = $search->request('GET', 'https://api.emploi-store.fr/partenaire/offresdemploi/v2/offres/search?commune='.$city.'&distance='.$distance.'&motsCles='.$motsCles.'&modeSelectionPartenaires='.$partenaire.'', [
             'verify' => false,
             'stream' => true,
-            'headers' => ['Authorization' => 'Bearer '. $token->access_token],
+            'headers' => ['Authorization' => 'Bearer '. $this->tokenPE->access_token],
         ]);
         $datas = json_decode($list->getBody());
         return view('recherche', ['datas' => $datas->resultats, 'departs' => $this->departs]);
