@@ -22,14 +22,14 @@
                     @enderror
                 </div>
                 <div class="input-field">
-                    <input id="password" type="text" class="validate" name="password" value="{{ old('password') }}" required>
+                    <input id="password" type="password" class="validate" name="password" value="{{ old('password') }}" required>
                     <label for="password">Mot de passe</label>
                     @error('password')
                     <span class="helper-text" data-error="wrong">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="input-field">
-                    <input id="password_confirmation" type="text" class="validate" name="password_confirmation" value="{{ old('password_confirmation') }}" required>
+                    <input id="password_confirmation" type="password" class="validate" name="password_confirmation" value="{{ old('password_confirmation') }}" required>
                     <label for="password_confirmation">Confirmation du mot de passe</label>
                     @error('password_confirmation')
                     <span class="helper-text" data-error="wrong">{{$message}}</span>

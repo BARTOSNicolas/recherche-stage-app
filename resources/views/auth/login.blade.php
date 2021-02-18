@@ -19,7 +19,7 @@
                     @enderror
                 </div>
                 <div class="input-field">
-                    <input id="password" type="text" class="validate" name="password" value="" required>
+                    <input id="password" type="password" class="validate" name="password" value="" required>
                     <label for="password">Mot de passe</label>
                     @error('password')
                     <span class="helper-text" data-error="wrong">{{$message}}</span>
