@@ -1,9 +1,11 @@
 .card-container{
     display: flex;
     flex-wrap: wrap;
+    padding-top: 24px;
 
     .card{
         width: 23%;
+        height: 400px;
         margin-left: 1%;
         margin-right: 1%;
         .card-image{
@@ -43,12 +45,25 @@
             }
         }
         .card-content{
-            min-height: 136px;
+            min-height: 200px;
+            position: relative;
             .card-desc-cut{
                 display: -webkit-box;
                 -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
+            }
+            .text-relance{
+                position: absolute;
+                left: 25px;
+                right: 25px;
+                bottom: 16px;
+                text-align: center;
+                text-transform: uppercase;
+                font-weight: bold;
+                padding: 5px 0;
+                color:$app-color-secondary;
+                border: 1px solid $app-color-secondary;
             }
         }
         .card-reveal{
@@ -73,8 +88,17 @@
             height: 50px;
             align-items: center;
             a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating){
+                color: $app-color-secondary;
                 margin: 0;
                 padding: 0 12px;
+                transition: 500ms;
+                &:hover{
+                    background-color: lighten($app-color-secondary, 5%);
+                    color: white;
+                }
+                .waves-ripple{
+                    background-color: darken($app-color-secondary, 5%);
+                }
             }
         }
         @media screen and (max-width: 1400px){
@@ -131,10 +155,14 @@
 .modalUpdate{
     width: 80%;
     max-height: 90%;
+    @media screen and (max-width: 600px) {
+        width: 90%;
+    }
 }
 
 @media screen and (max-width: 600px) {
     .tap .tap-target-wrapper {
         right: -238px !important;
     }
+
 }

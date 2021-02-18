@@ -8,28 +8,28 @@
             <fieldset class="z-depth-2">
                 <legend class="z-depth-2">Créer ton compte</legend>
                 <div class="input-field">
-                    <input id="name" type="text" class="validate" name="name" value="{{ old('name') }}">
+                    <input id="name" type="text" class="validate" name="name" value="{{ old('name') }}" required>
                     <label for="name">Nom d'utilisateur</label>
                     @error('name')
                     <span class="helper-text" data-error="wrong">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="input-field">
-                    <input id="email" type="text" class="validate" name="email" value="{{ old('email') }}">
+                    <input id="email" type="text" class="validate" name="email" value="{{ old('email') }}" required>
                     <label for="email">Adresse mail</label>
                     @error('email')
                     <span class="helper-text" data-error="wrong">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="input-field">
-                    <input id="password" type="text" class="validate" name="password" value="{{ old('password') }}">
+                    <input id="password" type="text" class="validate" name="password" value="{{ old('password') }}" required>
                     <label for="password">Mot de passe</label>
                     @error('password')
                     <span class="helper-text" data-error="wrong">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="input-field">
-                    <input id="password_confirmation" type="text" class="validate" name="password_confirmation" value="{{ old('password_confirmation') }}">
+                    <input id="password_confirmation" type="text" class="validate" name="password_confirmation" value="{{ old('password_confirmation') }}" required>
                     <label for="password_confirmation">Confirmation du mot de passe</label>
                     @error('password_confirmation')
                     <span class="helper-text" data-error="wrong">{{$message}}</span>

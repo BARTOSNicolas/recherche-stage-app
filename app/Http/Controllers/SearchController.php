@@ -79,7 +79,12 @@ class SearchController extends Controller
             'headers' => ['Authorization' => 'Bearer '. $this->tokenPE->access_token],
         ]);
         $datas = json_decode($list->getBody());
-        return view('recherche', ['datas' => $datas->resultats, 'departs' => $this->departs]);
+        if($datas){
+            return view('recherche', ['datas' => $datas->resultats, 'departs' => $this->departs]);
+        }else{
+            return view('recherche', ['departs' => $this->departs, 'status' => true]);
+        }
+
 
     }
 }

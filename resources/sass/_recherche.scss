@@ -1,43 +1,64 @@
-.recherche{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    .search-poste{
-        width: 100%;
-        margin: 0 12px;
-    }
-    .search-city{
-        width: 100%;
+.search-container {
+    padding-top: 24px;
+    .recherche {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
 
-    }
-    .search-range{
-        width: 100%;
-        label{
-            display: block;
-        }
-        input{
-            width: 70%;
-            margin-right: 16px ;
-        }
-    }
-    .search-partenaire{
-        margin: 12px;
-
-        label{
-            color: black;
+        .search-poste {
+            width: 100%;
+            margin: 0 12px;
         }
 
+        .search-city {
+            width: 100%;
+
+        }
+
+        .search-range {
+            width: 100%;
+
+            label {
+                display: block;
+            }
+
+            input {
+                width: 70%;
+                margin-right: 16px;
+            }
+        }
+
+        .search-partenaire {
+            margin: 12px;
+
+            label {
+                color: black;
+            }
+
+        }
+
+        .autoDisable {
+            width: 100%;
+            margin: 0 12px;
+        }
+
+        .dropdown-content {
+            max-height: 500px;
+        }
     }
-    .autoDisable{
-        width: 100%;
-        margin: 0 12px;
-    }
-    .dropdown-content{
-        max-height: 500px;
-    }
-}
-.result{
-    .list-card{
-        margin-bottom: 8px;
+
+    .result {
+        .list-card {
+            .collapsible-body {
+                background-color: white;
+                margin: 0;
+            }
+        }
+
+        .no-offre {
+            padding-top: 50px;
+            text-align: center;
+            color: $app-color-secondary;
+        }
     }
 }

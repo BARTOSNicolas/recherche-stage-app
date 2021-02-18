@@ -7,7 +7,7 @@
             <div class="modal-content">
                 <div class="input-field">
                     <i class="material-icons prefix">create</i>
-                    <input id="entreprise" type="text" class="validate" name="ent_name" value="{{ old('ent_name') }}">
+                    <input id="entreprise" type="text" class="validate" name="ent_name" value="{{ old('ent_name') }}" required>
                     <label for="entreprise">Entreprise</label>
                     @error('ent_name')
                     <span class="helper-text" data-error="wrong">{{$message}}</span>
@@ -15,7 +15,7 @@
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix">create</i>
-                    <input id="ville" type="text" class="validate" name="ent_city" value="{{ old('ent_city') }}">
+                    <input id="ville" type="text" class="validate" name="ent_city" value="{{ old('ent_city') }}" required>
                     <label for="ville">Ville</label>
                     @error('ent_city')
                     <span class="helper-text" data-error="wrong">{{$message}}</span>
@@ -100,9 +100,9 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="btn-footer">
                 <button type="submit" class="modal-close waves-effect waves-light btn">Valider</button>
-                <a href="#!" class="modal-close waves-effect waves-light btn">Annuler</a>
+                <a href="{{route('homepage')}}" class="modal-close waves-effect waves-light btn">Annuler</a>
             </div>
         </form>
     </div>

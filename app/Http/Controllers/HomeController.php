@@ -48,7 +48,10 @@ class HomeController extends Controller
     }
     //Homepage avec les candidatures à candidater du User
     public function candidate(){
-        $entreprises = Suivi::where('user_id', Auth::user()->id)->whereNull('first_date')->get();
+        $entreprises = Suivi::where([
+            ['user_id', Auth::user()->id],
+            ['status', "!=", "negatif"]
+            ])->whereNull('first_date')->get();
         if ($entreprises->isEmpty()){
             return view('home', ['entreprises' => $entreprises, 'vide' => 'Vous n\'avez plus d\'entreprises à candidater!']);
         }else{
@@ -167,7 +170,11 @@ class HomeController extends Controller
     public function idea(){
         return view('idea');
     }
-
+    //Page apporter une amélioration
+    public function explicate(){
+        return view('explication');
+    }
+    //Stats dans le menu
     static function stats(){
         $stats = [];
         $stats['all'] = Suivi::where('user_id', Auth::user()->id)->count();

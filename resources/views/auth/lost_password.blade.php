@@ -8,7 +8,7 @@
                 <legend class="z-depth-2">Tu as perdu ton mot de passe ?</legend>
                 @csrf
                 <div class="input-field">
-                    <input id="email" type="text" class="validate" name="email" value="{{ old('email') }}">
+                    <input id="email" type="text" class="validate" name="email" value="{{ old('email') }}" required>
                     <label for="email">Adresse mail</label>
                     @error('email')
                         <span class="helper-text" data-error="wrong">{{$message}}</span>

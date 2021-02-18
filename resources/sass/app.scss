@@ -1,14 +1,33 @@
+
+@import "theming";
+@import "materialize.scss";
 @import "variables";
 
 @import "login";
 @import "homepage";
 @import "recherche";
+
+
+
 //LAYOUT
+html, body{
+    height: 100%;
+}
 header, main, footer {
     padding-left: 300px;
 }
+body{
+    background-image: url('/images/img.jpg');
+    background-attachment: fixed;
+    position: relative;
+}
 hr{
     margin: 0;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid $app-color-plight;
+    padding: 0;
 }
 header{
     .navbar-fixed nav{
@@ -24,7 +43,7 @@ header{
         flex-direction: column;
         justify-content: space-between;
         .profil{
-            height: 200px;
+            height: 180px;
             background-color: $app-color-plight;
             display: flex;
             flex-direction: column;
@@ -34,6 +53,7 @@ header{
                 margin: 0;
                 padding: 0 32px;
                 font-size: 20px;
+                color: $app-color-primary;
             }
             .auth-name{
                 margin: 0;
@@ -41,6 +61,7 @@ header{
                 padding-bottom: 16px;
                 font-size: 24px;
                 font-weight: bold;
+                color: $app-color-pdark;
             }
         }
         .badge{
@@ -48,8 +69,12 @@ header{
         }
         .submenu{
             display: flex;
+            justify-content: space-evenly;
+            background-color: $app-color-primary;
             li{
+                padding-top: 8px;
                 a{
+                    padding: 0 16px;
                     &:hover {
                         background-color: transparent;
                         .material-icons{
@@ -57,15 +82,47 @@ header{
                         }
                     }
                     .material-icons{
-                        font-size: 36px;
-                        color: $app-color-primary;
+                        font-size: 24px;
+                        color: $app-color-grey;
                     }
                 }
             }
         }
     }
 }
-
+.submenu-login{
+    display: flex;
+    justify-content: space-evenly;
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    width: 200px;
+    @media only screen and (max-width : 600px){
+        top: -16px;
+        left: 0;
+        right: 0;
+        width: auto;
+        background-color: $app-color-primary;
+    }
+    li{
+        padding-top: 8px;
+        a{
+            &:hover {
+                background-color: transparent;
+                .material-icons{
+                    animation: rubberBand 750ms infinite;
+                }
+            }
+            .material-icons{
+                font-size: 24px;
+                color: $app-color-primary;
+                @media only screen and (max-width : 600px){
+                    color: $app-color-grey;
+                }
+            }
+        }
+    }
+}
 @media only screen and (max-width : 992px) {
     header, main, footer {
         padding-left: 0;
@@ -74,9 +131,21 @@ header{
         padding-top: 0;
         z-index: 999;
     }
+    nav .brand-logo.center{
+        font-size: 22px!important;
+    }
+
 }
 .container{
     width: 90%;
+    &.idea, &.info, &.data{
+        height: 100%;
+        position: relative;
+
+        .btn{
+            margin-bottom: 48px;
+        }
+    }
 }
 .switch{
     margin-bottom: 16px;
@@ -96,6 +165,10 @@ header{
     right: 33%;
     top: unset;
     bottom: 5%;
+    @media only screen and (max-width : 600px) {
+        right: 0;
+        bottom: 0;
+    }
     .toast{
         background-color: #30B349;
         padding: 10px 50px;
@@ -111,5 +184,46 @@ header{
     display: block;
     margin-bottom: 8px;
 }
+.btn-footer{
+    margin-bottom: 48px;
+}
+.info-text, .data-text, .idea-text{
+    width: 60%;
+    padding-top: 24px;
+    @media only screen and (max-width : 600px) {
+        padding-top: 48px;
+        width: 100%;
+    }
+    .title{
+        color: $app-color-secondary;
+        font-size: 44px;
+        margin-top: 0px;
+        margin-bottom: 16px;
+    }
+    .subtitle{
+        font-size: 24px;
+        color: $app-color-primary;
+        margin-top: 16;
+        margin-bottom: 8px;
+    }
+    p{
+        margin: 0;
+        margin-bottom: 8px;
+    }
+    .last{
+        margin-bottom: 48px;
+    }
+    .ital{
+        font-style: italic;
+    }
+
+}
+a:not(.btn){
+    color: $app-color-secondary;
+    &:visited{
+        color: darken($app-color-secondary, 15%)
+    }
+}
+
 
 

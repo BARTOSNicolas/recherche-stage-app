@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <div class="row">
+    <div class="row search-container">
         <div class="col s12 m4 l4 xl3">
             <form class="recherche" action="#" method="post">
                 @csrf
@@ -30,14 +30,17 @@
                     </label>
                 </div>
                 <button type="submit" class="waves-effect waves-light btn autoDisable" disabled>Rechercher</button>
-                <p>nombres d'offres : {{ count($datas)}}</p>
-
-
+                <p>nombres d'offres : @isset($datas){{ count($datas)}}@endisset</p>
             </form>
         </div>
         <div class="col s12 m8 l8 xl9">
             <div class="container">
                 <div class="result">
+                    @isset($status)
+                        <div class="no-offre">
+                            <p>Pas d'offres aujourd'hui</p>
+                        </div>
+                    @endisset
                     @if(isset($datas))
                         <ul class="collapsible">
                             @foreach($datas as $offre)

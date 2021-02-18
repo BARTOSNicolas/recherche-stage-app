@@ -1,4 +1,5 @@
 require('./bootstrap');
+require('./materialize.js');
 
 $(document).ready(function(){
    let instance = $('.sidenav').sidenav();
@@ -29,11 +30,13 @@ $(document).ready(function(){
     //Auto complete
     require('./autocomplete');
 
-    let range = document.getElementById('distance');
-    range.addEventListener('input', function (){
-        $('#rangeValue').text(range.value + ' km');
-    }, false)
 
+    let range = document.getElementById('distance');
+    if(range) {
+        range.addEventListener('input', function () {
+            $('#rangeValue').text(range.value + ' km');
+        }, false)
+    }
 
 });
 

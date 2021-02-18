@@ -1,9 +1,9 @@
-@extends('layout')
+@extends(isset(Illuminate\Support\Facades\Auth::user()->name) ? 'layout' : 'auth.layout')
 
 @section('content')
-    <div class="container">
+    <div class="container data">
         <div class="data-text">
-            <h2>Données personnelles</h2>
+            <h2 class="title">Données personnelles</h2>
 
             <p>Les informations recueillies sur les formulaires sont enregistrées dans un fichier informatisé par BARTOS Nicolas pour la gestion et l'organisation du site.</p>
 
@@ -19,10 +19,15 @@
             BARTOS Nicolas<br>
             5 chemin de la Mairie<br>
             38610 Gières<br>
-            nicolas@wilddev.fr</p>
+            nicolas.bartos@le-campus-numerique.fr</p>
 
-            <p>Si vous estimez, après nous avoir contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.</p>
+            <p class="last">Si vous estimez, après nous avoir contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.</p>
         </div>
+        @empty(Illuminate\Support\Facades\Auth::user()->name)
+            <a href="{{ route('login') }}" class="create-btn waves-effect waves-light btn">
+                Retour
+            </a>
+        @endempty
     </div>
 
 @endsection
