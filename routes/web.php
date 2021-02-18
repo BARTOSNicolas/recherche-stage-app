@@ -51,7 +51,7 @@ Route::get('/envoyersonidee', [HomeController::class, 'idea'])->name('idea');
 Route::get('/candidate-expliquée', [HomeController::class, 'explicate'])->name('explicate');
 //Recherche
 Route::get('/recherche', [SearchController::class, 'index'])->name('recherche')->middleware('auth');
-Route::post('/recherche', [SearchController::class, 'list'])->name('recherche')->middleware('auth');
+Route::post('/recherche', [SearchController::class, 'list'])->name('recherched')->middleware('auth');
 
 //test city
 Route::get('/city', [SearchController::class, 'create_json'])->name('city')->middleware('auth');
