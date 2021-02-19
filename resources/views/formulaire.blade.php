@@ -45,7 +45,7 @@
                         </div>
                         <div class="input-field">
                             <i class="material-icons prefix">create</i>
-                            <textarea id="description" type="text" class="materialize-textarea" name="ent_description" rows="4">{{ old('ent_description') }}</textarea>
+                            <textarea id="description" type="text" class="materialize-textarea" name="ent_description" rows="4" data-length="255">{{ old('ent_description') }}</textarea>
                             <label for="description">Description</label>
                         </div>
                     </div>

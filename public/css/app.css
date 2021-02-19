@@ -8762,3 +8762,7 @@ a:not(.btn):not(.btn-large):not(.btn-small) {
 a:not(.btn):not(.btn-large):not(.btn-small):visited {
   color: #d53300;
 }
+
+textarea.materialize-textarea {
+  height: 104px !important;
+}

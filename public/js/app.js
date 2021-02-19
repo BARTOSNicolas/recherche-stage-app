@@ -1845,6 +1845,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 __webpack_require__(/*! ./materialize.js */ "./resources/js/materialize.js");
 
 $(document).ready(function () {
+  //Menu Side Nav et Button Add
   var instance = $('.sidenav').sidenav();
   var tap = $('.tap-target').tapTarget();
   $('.tap').mouseenter(function () {
@@ -1860,13 +1861,27 @@ $(document).ready(function () {
 
   $('.modal').modal(); //DatePicker
 
-  $('.datepicker').datepicker(); //FormSelect
+  $('.datepicker').datepicker({
+    firstDay: 1,
+    showClearBtn: true,
+    format: 'yyyy-mm-dd',
+    i18n: {
+      weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+      weekdays: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+      monthsShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aou', 'Sept', 'Oct', 'Nov', 'Déc'],
+      months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+      weekdaysAbbrev: ['D', 'L', 'M', 'M', 'J', 'V', 'S']
+    }
+  }); //FormSelect
 
   $('select').formSelect(); //Collapsible
 
   $('.collapsible').collapsible(); //Auto complete
 
-  __webpack_require__(/*! ./autocomplete */ "./resources/js/autocomplete.js");
+  __webpack_require__(/*! ./autocomplete */ "./resources/js/autocomplete.js"); //Textaera count
+
+
+  $('textarea#description, textarea[name="ent_description"]').characterCounter(); //Distance Range count
 
   var range = document.getElementById('distance');
 

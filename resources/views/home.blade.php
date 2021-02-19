@@ -48,11 +48,11 @@
                         <a class="card-contact mail"
                            href="mailto::{{ $suivi->entreprise->ent_mail }}">{{ $suivi->entreprise->ent_mail }}</a>
                         @isset($suivi->first_date)<p class="card-contact candidate">Candidaté le
-                            : {{ $suivi->first_date }}</p>@endisset
+                            : {{ date('d/m/Y', strtotime($suivi->first_date)) }}</p>@endisset
                         @isset($suivi->relaunch)<p class="card-contact relance">Relancé le
-                            : {{ $suivi->relaunch }}</p>@endisset
+                            : {{ date('d/m/Y', strtotime($suivi->relaunch)) }}</p>@endisset
                         @isset($suivi->interview_date)<p class="card-contact interview">Entretien le
-                            : {{ $suivi->interview_date }}</p>@endisset
+                            : {{ date('d/m/Y', strtotime($suivi->interview_date)) }}</p>@endisset
 
                     </div>
                     <div class="card-action">
@@ -134,7 +134,7 @@
                                     </div>
                                     <div class="input-field">
                                         <i class="material-icons prefix">create</i>
-                                        <textarea id="description{{$suivi->id}}" type="text"
+                                        <textarea id="description{{$suivi->id}}" type="text" data-length="255"
                                                   class="materialize-textarea" name="ent_description"
                                                   rows="4">{{ $suivi->entreprise->ent_description }}</textarea>
                                         <label for="description{{$suivi->id}}">Description</label>

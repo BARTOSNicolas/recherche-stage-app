@@ -224,6 +224,8 @@ a:not(.btn){
         color: darken($app-color-secondary, 15%)
     }
 }
-
+textarea.materialize-textarea{
+    height: 104px!important;
+}
 
 

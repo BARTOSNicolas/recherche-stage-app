@@ -104,6 +104,10 @@ class HomeController extends Controller
             'ent_name' => 'required',
             'ent_city' => 'required',
             'status' => 'required',
+            'ent_mail' => 'max:100',
+            'ent_phone' => 'max:100',
+            'ent_web' => 'max:100',
+            'ent_description' => 'max:255'
         ]);
 
         $entreprise = new Entreprise;
@@ -143,6 +147,10 @@ class HomeController extends Controller
             'ent_name' => 'required',
             'ent_city' => 'required',
             'status' => 'required',
+            'ent_mail' => 'max:100',
+            'ent_phone' => 'max:100',
+            'ent_web' => 'max:100',
+            'ent_description' => 'max:255'
         ]);
         $suivi->entreprise->update($request->all());
         $suivi->update($request->all());
