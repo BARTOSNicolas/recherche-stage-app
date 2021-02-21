@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Suivi;
@@ -10,9 +11,14 @@ use App\Models\Entreprise;
 
 class HomeController extends Controller
 {
+    //Si pas d'user
+    public function welcome(){
+        return view('homepage.homepage');
+    }
+
     //Homepage avec Toutes les candidatures du User
     public function index(){
-        $entreprises = Suivi::where('user_id', Auth::user()->id)->get();
+        $entreprises = Suivi::where('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
         if ($entreprises->isEmpty()){
             return view('home', ['entreprises' => $entreprises, 'vide' => 'Vous n\'avez pas encore créé de fiche candidature.', 'btn' => true]);
         }else{
@@ -27,7 +33,7 @@ class HomeController extends Controller
             ['first_date', '!=', null],
             ['status', '=', 'encours'],
             ['response', '=', 'off'],
-        ])->orderBy('relaunch')->get();
+        ])->orderBy('relaunch')->orderBy('created_at','desc')->get();
         if ($entreprises->isEmpty()){
             return view('home', ['entreprises' => $entreprises, 'vide' => 'Aucune entreprise à relancer !']);
         }else{
@@ -39,7 +45,7 @@ class HomeController extends Controller
         $entreprises = Suivi::where('user_id', Auth::user()->id)->where([
             ['interview_date', '!=', null],
             ['interview_date', '>', date("Y-m-d")]
-        ])->orderBy('interview_date')->get();
+        ])->orderBy('interview_date')->orderBy('created_at','desc')->get();
         if ($entreprises->isEmpty()){
             return view('home', ['entreprises' => $entreprises, 'vide' => 'Aucun entretien à venir !']);
         }else{
@@ -51,7 +57,7 @@ class HomeController extends Controller
         $entreprises = Suivi::where([
             ['user_id', Auth::user()->id],
             ['status', "!=", "negatif"]
-            ])->whereNull('first_date')->get();
+            ])->whereNull('first_date')->orderBy('created_at','desc')->get();
         if ($entreprises->isEmpty()){
             return view('home', ['entreprises' => $entreprises, 'vide' => 'Vous n\'avez plus d\'entreprises à candidater!']);
         }else{
@@ -63,7 +69,7 @@ class HomeController extends Controller
         $entreprises = Suivi::where([
             ['user_id', Auth::user()->id],
             ['status', '=', 'positif'],
-        ])->get();
+        ])->orderBy('created_at','desc')->get();
         if ($entreprises->isEmpty()){
             return view('home', ['entreprises' => $entreprises, 'vide' => 'Pas encore de réponses positive !']);
         }else{
@@ -75,7 +81,7 @@ class HomeController extends Controller
         $entreprises = Suivi::where([
             ['user_id', Auth::user()->id],
             ['status', '=', 'negatif'],
-        ])->get();
+        ])->orderBy('created_at','desc')->get();
         if ($entreprises->isEmpty()){
             return view('home', ['entreprises' => $entreprises, 'vide' => 'Pas encore de réponses négative !']);
         }else{
@@ -87,7 +93,7 @@ class HomeController extends Controller
         $entreprises = Suivi::where([
             ['user_id', Auth::user()->id],
             ['status', '=', 'encours'],
-        ])->get();
+        ])->orderBy('created_at','desc')->get();
         if ($entreprises->isEmpty()){
             return view('home', ['entreprises' => $entreprises, 'vide' => 'Vous n\'avez pas encore envoyer de candidature !']);
         }else{
@@ -112,6 +118,7 @@ class HomeController extends Controller
 
         $entreprise = new Entreprise;
 
+        $entreprise->user_id = Auth::user()->id;
         $entreprise->ent_name = $request->input('ent_name');
         $entreprise->ent_city = $request->input('ent_city');
         $entreprise->ent_contact_name = $request->input('ent_contact_name');
@@ -124,7 +131,7 @@ class HomeController extends Controller
 
         $suivi = new Suivi;
 
-        $suivi->user_id = Auth::user()->id; //Amodifier avec la gestion des users
+        $suivi->user_id = Auth::user()->id;
         $suivi->entreprise_id = $entreprise->id;
         $suivi->first_date = $request->input('first_date');
         $suivi->relaunch = $request->input('relaunch');
@@ -178,10 +185,6 @@ class HomeController extends Controller
     public function idea(){
         return view('idea');
     }
-    //Page apporter une amélioration
-    public function explicate(){
-        return view('explication');
-    }
     //Stats dans le menu
     static function stats(){
         $stats = [];
@@ -212,5 +215,14 @@ class HomeController extends Controller
         $stats['candidate']  = Suivi::where('user_id', Auth::user()->id)->whereNull('first_date')->count();
 
         return $stats;
+    }
+
+    // ---- Suppression User --- //
+    public function suppressionUser(){
+
+        $user = User::find(Auth::user()->id);
+        $user->delete();
+
+        return redirect()->route('homepage');
     }
 }

@@ -49,9 +49,94 @@
 
     .result {
         .list-card {
+            .collapsible-header{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                p{
+                    margin: 0;
+                    color: $app-color-pdark;
+                }
+                i.material-icons{
+                    vertical-align: bottom;
+                    color: $app-color-secondary;
+                }
+            }
+
             .collapsible-body {
                 background-color: white;
                 margin: 0;
+                .body-ent{
+                    color: $app-color-secondary;
+                    margin: 0;
+                    margin-bottom: 8px;
+                }
+                .body-title{
+                    color: $app-color-primary;
+                    margin: 0;
+                    margin-bottom: 8px;
+                }
+                .body-lieu{
+                    margin: 0;
+                    margin-bottom: 8px;
+                    text-transform: uppercase;
+                    color: $app-color-secondary;
+                }
+                .body-date{
+                    font-style: italic;
+                    color: $app-color-primary;
+                    margin: 0;
+                    margin-bottom: 8px;
+                }
+                .body-desc{
+                    margin: 0;
+                    margin-bottom: 16px;
+                }
+                hr{
+                    margin-bottom: 8px;
+                }
+                .body-subtitle{
+                    margin: 0;
+                    color : $app-color-primary;
+                    font-weight: 600;
+                }
+                .body-form{
+                    margin: 0;
+                    margin-bottom: 8px;
+                    span{
+                        color: $app-color-secondary;
+                    }
+                    &.quality{
+                        margin-bottom: 0;
+                        span{
+                            color: $app-color-secondary;
+                        }
+                    }
+                }
+                .contact-line{
+                    margin: 0;
+                    margin-bottom: 4px;
+                }
+                .btn-offre{
+                    padding-top: 16px;
+                }
+                .cote-up{
+                    text-transform: uppercase;
+                    color: $app-color-secondary;
+                    font-weight: 600;
+                    margin: 0;
+                    margin-bottom: 8px;
+                }
+                .cote-line{
+                    margin: 0;
+                    margin-bottom: 4px;
+                    .bold{
+                        font-weight: 600;
+                    }
+                    .color{
+                        color: $app-color-secondary;
+                    }
+                }
             }
         }
 

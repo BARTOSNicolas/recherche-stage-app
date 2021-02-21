@@ -12,4 +12,11 @@ class Entreprise extends Model
 
     protected $fillable = ['ent_name','ent_city', 'ent_contact_name', 'ent_mail', 'ent_phone', 'ent_web', 'ent_description'];
 
+    public function suivis(){
+        return $this->belongsTo(
+            Suivi::class,
+            'id',
+            'entreprise_id',
+        );
+    }
 }

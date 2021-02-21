@@ -15,8 +15,8 @@ class CreateSuivisTable extends Migration
     {
         Schema::create('suivis', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('entreprise_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('entreprise_id');
             $table->date('first_date')->nullable();
             $table->date('relaunch')->nullable();
             $table->char('relaunched', 10);
@@ -24,7 +24,11 @@ class CreateSuivisTable extends Migration
             $table->char('status', 50);
             $table->date('interview_date')->nullable();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('entreprise_id')->references('id')->on('entreprises')->onDelete('cascade');
+
         });
+
     }
 
     /**

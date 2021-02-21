@@ -1855,11 +1855,17 @@ $(document).ready(function () {
     setTimeout(function () {
       $('.tap-target').tapTarget('close');
     }, 500);
-  }); //Tooltip
+  }); //DropDown Menu
+
+  $(".dropdown-trigger").dropdown(); //Tooltip
 
   $('.tooltipped').tooltip(); //Modal
 
-  $('.modal').modal(); //DatePicker
+  $('.modal').modal(); //Parallax
+
+  $('.parallax').parallax(); //LightBox
+
+  $('.materialboxed').materialbox(); //DatePicker
 
   $('.datepicker').datepicker({
     firstDay: 1,
@@ -1889,7 +1895,17 @@ $(document).ready(function () {
     range.addEventListener('input', function () {
       $('#rangeValue').text(range.value + ' km');
     }, false);
-  }
+  } //Confirmation suppression user
+
+
+  var btnSupprUser = document.getElementById('btnSupprUser');
+  $('#checkUser').change(function () {
+    if (this.checked) {
+      btnSupprUser.removeAttribute('disabled');
+    } else {
+      btnSupprUser.setAttribute('disabled', true);
+    }
+  });
 });
 
 /***/ }),

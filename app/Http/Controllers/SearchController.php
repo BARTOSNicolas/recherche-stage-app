@@ -84,7 +84,16 @@ class SearchController extends Controller
         }else{
             return view('recherche', ['departs' => $this->departs, 'status' => true]);
         }
+    }
 
-
+    public function add_from_pe($ent, $city, $link){
+        if($ent == 'null'){
+            $nom_ent = '';
+        }else{
+           $nom_ent = $ent;
+        }
+        $ville = substr_replace($city,'',  0, 5);
+        $lien = 'https://candidat.pole-emploi.fr/offres/recherche/detail/'.$link.'';
+        return view('addfrompe', ['nom_ent' => $nom_ent, "ville" => $ville, "lien" => $lien]);
     }
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\LoginController;
 use \App\Http\Controllers\HomeController;
 use \App\Http\Controllers\SearchController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +30,9 @@ Route::post('/reset-password', [LoginController::class, 'reset_password'])->midd
 //Logout
 Route::get('/deconnexion', [LoginController::class, 'logout'])->name('logout');
 //HomePage
-Route::get('/', [HomeController::class, 'index'])->name('homepage')->middleware('auth');
+Route::get('/home', [HomeController::class, 'index'])->name('homepage')->middleware('auth');
+Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
+
 Route::get('/relance', [HomeController::class, 'relaunch'])->name('relaunch')->middleware('auth');
 Route::get('/entretien', [HomeController::class, 'interview'])->name('interview')->middleware('auth');
 Route::get('/candidater', [HomeController::class, 'candidate'])->name('candidate')->middleware('auth');
@@ -48,10 +51,12 @@ Route::delete('/effacement/{suivi}', [HomeController::class, 'delete'])->name('d
 Route::get('/information', [HomeController::class, 'info'])->name('info');
 Route::get('/protectiondesdonnees', [HomeController::class, 'data'])->name('data');
 Route::get('/envoyersonidee', [HomeController::class, 'idea'])->name('idea');
-Route::get('/candidate-expliquée', [HomeController::class, 'explicate'])->name('explicate');
 //Recherche
 Route::get('/recherche', [SearchController::class, 'index'])->name('recherche')->middleware('auth');
 Route::post('/recherche', [SearchController::class, 'list'])->name('recherched')->middleware('auth');
 
-//test city
-Route::get('/city', [SearchController::class, 'create_json'])->name('city')->middleware('auth');
+//test PE
+Route::get('/ajouterdepoleemploi/{ent}/{city}/{link}', [SearchController::class, 'add_from_pe'])->name('addFromPE')->middleware('auth');
+
+//User
+Route::delete('/', [HomeController::class, 'suppressionUser'])->name('deleteUser')->middleware('auth');

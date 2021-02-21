@@ -7,7 +7,7 @@
             <div class="modal-content">
                 <div class="input-field">
                     <i class="material-icons prefix">create</i>
-                    <input id="entreprise" type="text" class="validate" name="ent_name" value="{{ old('ent_name') }}" required>
+                    <input id="entreprise" type="text" class="validate" name="ent_name" value="{{ old('ent_name', $nom_ent) }}" required>
                     <label for="entreprise">Entreprise</label>
                     @error('ent_name')
                     <span class="helper-text" data-error="wrong">{{$message}}</span>
@@ -15,7 +15,7 @@
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix">create</i>
-                    <input id="ville" type="text" class="validate" name="ent_city" value="{{ old('ent_city') }}" required>
+                    <input id="ville" type="text" class="validate" name="ent_city" value="{{ old('ent_city', $ville) }}" required>
                     <label for="ville">Ville</label>
                     @error('ent_city')
                     <span class="helper-text" data-error="wrong">{{$message}}</span>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="input-field">
                             <i class="material-icons prefix">create</i>
-                            <textarea id="description" type="text" class="materialize-textarea" name="ent_description" rows="4" data-length="255">{{ old('ent_description') }}</textarea>
+                            <textarea id="description" type="text" class="materialize-textarea" name="ent_description" rows="4" data-length="255">{{ old('ent_description', $lien) }}</textarea>
                             <label for="description">Description</label>
                         </div>
                     </div>
@@ -111,9 +111,9 @@
     <script>
         $(document).ready(function() {
             @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    M.toast({html: '{{ $error }}', displayLength: 5000, classes: 'toast-error'});
-                @endforeach
+            @foreach ($errors->all() as $error)
+            M.toast({html: '{{ $error }}', displayLength: 5000, classes: 'toast-error'});
+            @endforeach
             @endif
         })
     </script>

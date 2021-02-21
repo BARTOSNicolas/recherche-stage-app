@@ -6,6 +6,7 @@
 @import "login";
 @import "homepage";
 @import "recherche";
+@import "welcome";
 
 
 
@@ -30,6 +31,12 @@ hr{
     padding: 0;
 }
 header{
+    a.brand-logo.center{
+        color: white!important;
+        &:hover{
+            background-color: transparent;
+        }
+    }
     .navbar-fixed nav{
         right: 0;
         background-color: $app-color-pdark;
@@ -55,17 +62,38 @@ header{
                 font-size: 20px;
                 color: $app-color-primary;
             }
-            .auth-name{
-                margin: 0;
-                padding: 0 32px;
-                padding-bottom: 16px;
-                font-size: 24px;
-                font-weight: bold;
-                color: $app-color-pdark;
+            .user-menu{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .auth-name{
+                    display: inline;
+                    margin: 0;
+                    padding: 0 32px;
+                    padding-bottom: 16px;
+                    font-size: 24px;
+                    font-weight: bold;
+                    color: $app-color-pdark;
+                }
+                .dropdown-trigger{
+                    padding-right: 16px;
+                }
+                .dropdown-content{
+                    width: auto!important;
+                    .divider{
+                        margin: 0;
+                    }
+                }
             }
+
         }
         .badge{
             color:$app-color-primary;
+        }
+        .menu{
+            li{
+                text-transform: uppercase;
+            }
         }
         .submenu{
             display: flex;
@@ -136,6 +164,7 @@ header{
     }
 
 }
+
 .container{
     width: 90%;
     &.idea, &.info, &.data{
@@ -146,6 +175,9 @@ header{
             margin-bottom: 48px;
         }
     }
+}
+.formulaire{
+    padding-top: 64px;
 }
 .switch{
     margin-bottom: 16px;
@@ -190,6 +222,7 @@ header{
 .info-text, .data-text, .idea-text{
     width: 60%;
     padding-top: 24px;
+    padding-bottom: 24px;
     @media only screen and (max-width : 600px) {
         padding-top: 48px;
         width: 100%;

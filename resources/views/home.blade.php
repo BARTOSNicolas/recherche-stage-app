@@ -76,7 +76,6 @@
                         </form>
                         <a href="#!" class="modal-close waves-effect waves-teal btn">Annuler</a>
                     </div>
-
                 </div>
 
 
@@ -157,7 +156,7 @@
                                         <i class="material-icons prefix">today</i>
                                         <input type="text" id="interview{{$suivi->id}}" class="datepicker"
                                                name="interview_date" value="{{ $suivi->interview_date }}">
-                                        <label for="interview{{$suivi->id}}">Date de l'entretien'</label>
+                                        <label for="interview{{$suivi->id}}">Date de l'entretien</label>
                                     </div>
                                     <div class="switch">
                                         <label>

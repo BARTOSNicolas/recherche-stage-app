@@ -15,6 +15,7 @@ class CreateEntreprisesTable extends Migration
     {
         Schema::create('entreprises', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->char('ent_name',255);
             $table->char('ent_city',255);
             $table->char('ent_contact_name',255)->nullable();
@@ -22,7 +23,7 @@ class CreateEntreprisesTable extends Migration
             $table->char('ent_phone',100)->nullable();
             $table->char('ent_web',100)->nullable();
             $table->text('ent_description')->nullable();
-
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -13,12 +13,20 @@ $(document).ready(function(){
             $('.tap-target').tapTarget('close');
         },500)
     })
+    //DropDown Menu
+    $(".dropdown-trigger").dropdown();
 
     //Tooltip
     $('.tooltipped').tooltip();
 
     //Modal
     $('.modal').modal();
+
+    //Parallax
+    $('.parallax').parallax();
+
+    //LightBox
+    $('.materialboxed').materialbox();
 
     //DatePicker
     $('.datepicker').datepicker({
@@ -53,6 +61,17 @@ $(document).ready(function(){
             $('#rangeValue').text(range.value + ' km');
         }, false)
     }
+
+    //Confirmation suppression user
+    let btnSupprUser = document.getElementById('btnSupprUser');
+    $('#checkUser').change(function(){
+        if (this.checked){
+            btnSupprUser.removeAttribute('disabled')
+        }else{
+            btnSupprUser.setAttribute('disabled', true)
+        }
+    })
+
 
 });
 

@@ -10,7 +10,7 @@
         <form class="auth" action="{{ route('authentification') }}" method="POST">
             @csrf
             <fieldset class="z-depth-2">
-                <legend class="z-depth-2">Connecte toi à ta base</legend>
+                <legend class="z-depth-2">Connecte toi à tes candidatures</legend>
                 <div class="input-field">
                     <input id="name" type="text" class="validate" name="name" value="{{ old('name') }}" required>
                     <label for="name">Nom</label>

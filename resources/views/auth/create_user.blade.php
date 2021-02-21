@@ -38,7 +38,7 @@
                 <button type="submit" class="create-btn waves-effect waves-light btn">
                     Créer
                 </button>
-                <a href="{{ route('login') }}" class="create-btn waves-effect waves-light btn">Annuler</a>
+                <a href="{{ route('homepage') }}" class="create-btn waves-effect waves-light btn">Annuler</a>
                 <label class="rgpd mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="rgpd">
                     <input type="checkbox" id="rgpd" name="rgpd" {{ old('rgpd') == 'on' ? 'checked' : '' }}>
                     <span class=" mdl-checkbox__label">J'autorise candidate.fr a sauvegarder mes informations personnelles.</span>

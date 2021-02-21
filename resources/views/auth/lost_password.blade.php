@@ -18,7 +18,7 @@
                     <button type="submit" class="create-btn waves-effect waves-light btn">
                         Envoyer
                     </button>
-                    <a href="{{ route('login') }}" class="create-btn waves-effect waves-light btn">
+                    <a href="{{ route('homepage') }}" class="create-btn waves-effect waves-light btn">
                         Annuler
                     </a>
                 </div>
