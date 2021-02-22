@@ -8664,6 +8664,28 @@ input[type=range]::-ms-thumb {
   color: white;
 }
 
+.tableau {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+.tableau .btn-export {
+  margin-bottom: 16px;
+}
+.tableau table {
+  border: 1px solid #CFD8DC;
+  background-color: #fff;
+}
+.tableau table th {
+  background-color: #607D8B;
+  color: white;
+}
+.tableau table tr {
+  border-bottom: 1px solid #CFD8DC;
+}
+.tableau table tr:nth-child(even) {
+  background-color: #ecf0f2;
+}
+
 html, body {
   height: 100%;
 }

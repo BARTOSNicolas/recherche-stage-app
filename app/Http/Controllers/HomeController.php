@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Suivi;
 use App\Models\Entreprise;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 
 class HomeController extends Controller
@@ -25,6 +27,24 @@ class HomeController extends Controller
             return view('home', ['entreprises' => $entreprises]);
         }
     }
+    //Tableau
+    public function tabs(){
+        $entreprises = Suivi::where('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
+
+        return view('tableau', ['entreprises' => $entreprises, 'pdf' => false]);
+    }
+    //Export en PDF
+    public function createPDF(){
+        //recupere donnée
+        $data = Suivi::where('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
+        //transmet les data vers la vue
+//        view()->share('entreprises', $data);
+        $pdf = PDF::loadView('createpdf', ['entreprises' => $data]);
+        $pdf->setPaper('A4', 'landscape');
+        //Renvoi un pdf a télécharger
+        return $pdf->download('tab_candidate.pdf');
+    }
+
     //Homepage avec les candidatures à relancer du User
     public function relaunch(){
         $entreprises = Suivi::where([

@@ -1,0 +1,22 @@
+.tableau{
+    padding-top: 48px;
+    padding-bottom: 48px;
+    .btn-export{
+        margin-bottom: 16px;
+    }
+
+    table{
+        border: 1px solid $app-color-plight;
+        background-color: #fff;
+        th{
+            background-color: $app-color-primary;
+            color: white;
+        }
+        tr{
+            border-bottom: 1px solid $app-color-plight;
+        }
+        tr:nth-child(even){
+            background-color: lighten($app-color-plight, 10%);
+        }
+    }
+}

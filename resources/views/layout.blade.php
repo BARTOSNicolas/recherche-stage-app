@@ -54,6 +54,7 @@
         <li><a href="{{ route('negative') }}"><span class="badge">{{\App\Http\Controllers\HomeController::stats()['negative']}}</span>Les négatives</a></li>
         <hr>
         <li><a href="{{ route('recherche') }}">Recherche un emploi (NOUVEAU)</a></li>
+        <li><a href="{{ route('tableau') }}">Voir le tableau (NOUVEAU)</a></li>
         <li><a href="{{ route('logout') }}">Me déconnecter</a></li>
         </ul>
     </div>

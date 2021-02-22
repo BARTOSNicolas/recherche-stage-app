@@ -55,8 +55,12 @@ Route::get('/envoyersonidee', [HomeController::class, 'idea'])->name('idea');
 Route::get('/recherche', [SearchController::class, 'index'])->name('recherche')->middleware('auth');
 Route::post('/recherche', [SearchController::class, 'list'])->name('recherched')->middleware('auth');
 
-//test PE
+//add PE
 Route::get('/ajouterdepoleemploi/{ent}/{city}/{link}', [SearchController::class, 'add_from_pe'])->name('addFromPE')->middleware('auth');
 
 //User
 Route::delete('/', [HomeController::class, 'suppressionUser'])->name('deleteUser')->middleware('auth');
+
+//Tableau
+Route::get('/tableau', [HomeController::class, 'tabs'])->name('tableau')->middleware('auth');
+Route::get('/tableau/pdf', [HomeController::class, 'createPDF'])->name('createPDF')->middleware('auth');
