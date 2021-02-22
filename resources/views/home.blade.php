@@ -21,9 +21,17 @@
                         #ABCAD9
                     @endif
                         ">
-                        @if($suivi->response == 'on')
-                            <span><i class="material-icons reponse">mark_as_unread</i></span>
-                        @endif
+                        <div class="icon-card">
+                            @if($suivi->response == 'on')
+                                <span><i class="material-icons reponse tooltipped" data-position="top" data-tooltip="Réponse reçu">mark_email_read</i></span>
+                            @endif
+                            @if($suivi->relaunched == 'on')
+                                    <span><i class="material-icons relaunched tooltipped" data-position="top" data-tooltip="Relancée">reply</i></span>
+                            @endif
+                            @if($suivi->interview_date != null)
+                                    <span><i class="material-icons interview tooltipped" data-position="top" data-tooltip="Entretien">event</i></span>
+                            @endif
+                        </div>
                         <i class="material-icons more">more_vert</i>
                         <h3 class="card-title activator">{{ $suivi->entreprise->ent_name }}</h3>
                         <p class="card-subtitle activator">{{ $suivi->entreprise->ent_city }}</p>

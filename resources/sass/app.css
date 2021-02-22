@@ -8228,7 +8228,7 @@ input[type=range]::-ms-thumb {
   top: 16px;
   color: white;
 }
-.card-container .card .card-image .reponse {
+.card-container .card .card-image .icon-card {
   position: absolute;
   top: 16px;
   left: 16px;
