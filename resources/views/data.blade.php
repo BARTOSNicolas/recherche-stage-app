@@ -9,7 +9,7 @@
 
             <p>Les données collectées ne seront pas communiquées.</p>
 
-            <p>Les données sont conservées pendant une durée de 1ans dès la fin d'utilisation du service.</p>
+            <p>Toutes vos données conservées sont supprimer à la suppression de votre compte.</p>
 
             <p>Vous pouvez accéder aux données vous concernant, les rectifier, demander leur effacement ou exercer votre droit à la limitation du traitement de vos données. Vous pouvez retirer à tout moment votre consentement au traitement de vos données.</p>
 
@@ -24,7 +24,7 @@
             <p class="last">Si vous estimez, après nous avoir contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.</p>
         </div>
         @empty(Illuminate\Support\Facades\Auth::user()->name)
-            <a href="{{ route('login') }}" class="create-btn waves-effect waves-light btn">
+            <a href="{{ route('welcome') }}" class="create-btn waves-effect waves-light btn">
                 Retour
             </a>
         @endempty

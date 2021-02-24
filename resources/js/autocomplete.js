@@ -1,6 +1,4 @@
-
-
-$('input.autocomplete').autocomplete({
+optionsComp = {
     data: {
         "POISEUL LA GRANGE": null,
         "VILLIERS LE DUC": null,
@@ -32786,10 +32784,11 @@ $('input.autocomplete').autocomplete({
         "CHERVES CHATELARS": null,
         "BONNEIL": null
     },
-
     minLength: 2,
     onAutocomplete: function() {
-        $('.autoDisable').removeAttr('disabled');
+        const btn = document.getElementById('autoDisable');
+        btn.removeAttribute('disabled');
     }
-
-});
+}
+var autoComp = document.querySelectorAll('.autocomplete');
+var instComp = M.Autocomplete.init(autoComp, optionsComp);

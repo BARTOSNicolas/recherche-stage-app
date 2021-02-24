@@ -8556,6 +8556,12 @@ input[type=range]::-ms-thumb {
 .welcome-footer a, .welcome-footer a:visited {
   color: white;
 }
+.welcome-footer .submenu {
+  display: flex;
+}
+.welcome-footer .submenu li {
+  padding-left: 16px;
+}
 
 .tableau {
   padding-top: 48px;
@@ -8836,7 +8842,7 @@ a:not(.btn):not(.btn-large):not(.btn-small) {
   color: #FF5722;
 }
 a:not(.btn):not(.btn-large):not(.btn-small):visited {
-  color: #d53300;
+  color: #ff7e55;
 }
 
 textarea.materialize-textarea {

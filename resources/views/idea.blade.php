@@ -8,7 +8,7 @@
             <h3 class="subtitle last">Vous pourrez partager avec nous vos idées d'amélioration.</h3>
         </div>
         @empty(Illuminate\Support\Facades\Auth::user()->name)
-            <a href="{{ route('login') }}" class="create-btn waves-effect waves-light btn">
+            <a href="{{ route('welcome') }}" class="create-btn waves-effect waves-light btn">
                 Retour
             </a>
         @endempty

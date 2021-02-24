@@ -217,7 +217,7 @@
         </div>
 
     </div>
-    <div class="tap">
+    <div class="tap" id="tap">
         <a id="menu" href="{{ route('formulaire') }}" class="waves-effect waves-light btn btn-floating pulse"><i
                 class="material-icons">add</i></a>
 
@@ -234,19 +234,19 @@
 @endsection
 @section('script')
     <script>
-        $(document).ready(function () {
+        document.addEventListener("DOMContentLoaded", function(event) {
             @if(session('status'))
-            M.toast({html: '{{session('status')}}', displayLength: 5000});
+                M.toast({html: '{{session('status')}}', displayLength: 5000});
             @endif
             @if(isset($vide) AND isset($btn))
-            setTimeout(function () {
-                $('.tap-target').tapTarget('open');
-            }, 1000)
+                setTimeout(function () {
+                    instTap[0].open();
+                }, 1000)
             @endif
             @if ($errors->any())
-            @foreach ($errors->all() as $error)
-            M.toast({html: '{{ $error }}', displayLength: 5000, classes: 'toast-error'});
-            @endforeach
+                @foreach ($errors->all() as $error)
+                    M.toast({html: '{{ $error }}', displayLength: 5000, classes: 'toast-error'});
+                @endforeach
             @endif
         })
     </script>

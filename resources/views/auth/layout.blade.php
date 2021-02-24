@@ -21,7 +21,7 @@
     <li><a class="tooltipped" href="{{ route('welcome') }}" data-position="top" data-tooltip="Plus d'info"><span class="material-icons">help</span></a></li>
 </ul>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

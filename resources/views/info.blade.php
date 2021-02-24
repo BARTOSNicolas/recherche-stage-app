@@ -34,7 +34,7 @@
             <p class="last">Le site candidate.wilddev.fr n'utilise que des cookies de fonctionnement qui ne nécéssitent pas le consentement de l'utilisateur. Un cookie est une information déposée sur votre disque dur par le serveur du site que vous visitez. Il contient plusieurs données qui sont stockées sur votre ordinateur dans un simple fichier texte auquel un serveur accède pour lire et enregistrer des informations .</p>
         </div>
         @empty(Illuminate\Support\Facades\Auth::user()->name)
-            <a href="{{ route('login') }}" class="create-btn waves-effect waves-light btn">
+            <a href="{{ route('welcome') }}" class="create-btn waves-effect waves-light btn">
                 Retour
             </a>
         @endempty

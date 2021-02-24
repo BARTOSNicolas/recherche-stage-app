@@ -109,7 +109,7 @@
 @endsection
 @section('script')
     <script>
-        $(document).ready(function() {
+        document.addEventListener("DOMContentLoaded", function(event) {
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
                     M.toast({html: '{{ $error }}', displayLength: 5000, classes: 'toast-error'});

@@ -1,77 +1,103 @@
 require('./bootstrap');
 require('./materialize.js');
 
-$(document).ready(function(){
-    //Menu Side Nav et Button Add
-   let instance = $('.sidenav').sidenav();
-   let tap = $('.tap-target').tapTarget();
-    $('.tap').mouseenter(function(){
-        $('.tap-target').tapTarget('open');
-    })
-    $('.tap').mouseleave(function(){
-        setTimeout(function (){
-            $('.tap-target').tapTarget('close');
-        },500)
-    })
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    //Menu Side Nav
+    const sideNav = document.querySelectorAll('.sidenav');
+    const instSideNav = M.Sidenav.init(sideNav);
+
+    //BTN Add
+    const tap = document.querySelectorAll('.tap-target');
+    instTap = M.TapTarget.init(tap);
+
+    const btnTap = document.querySelector('#tap');
+    if(btnTap) {
+        btnTap.addEventListener('mouseenter', function () {
+            instTap[0].open();
+        });
+        btnTap.addEventListener('mouseleave', function () {
+            setTimeout(function () {
+                instTap[0].close();
+            }, 500);
+        });
+    }
+
     //DropDown Menu
-    $(".dropdown-trigger").dropdown();
+    const drop = document.querySelectorAll('.dropdown-trigger');
+    const instDrop = M.Dropdown.init(drop);
 
     //Tooltip
-    $('.tooltipped').tooltip();
+    const toolpip = document.querySelectorAll('.tooltipped');
+    const instTool = M.Tooltip.init(toolpip);
 
     //Modal
-    $('.modal').modal();
+    const modals = document.querySelectorAll('.modal');
+    const instModal = M.Modal.init(modals);
 
     //Parallax
-    $('.parallax').parallax();
+    const parax = document.querySelectorAll('.parallax');
+    const instParax = M.Parallax.init(parax);
 
     //LightBox
-    $('.materialboxed').materialbox();
+    const box = document.querySelectorAll('.materialboxed');
+    const instBox = M.Materialbox.init(box);
 
     //DatePicker
-    $('.datepicker').datepicker({
+    const dateOptions = {
         firstDay: 1,
         showClearBtn: true,
         format: 'yyyy-mm-dd',
         i18n: {
-            weekdaysShort : ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-            weekdays : ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-            monthsShort : ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aou', 'Sept', 'Oct', 'Nov', 'Déc'],
-            months : ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-            weekdaysAbbrev : ['D', 'L', 'M', 'M', 'J', 'V', 'S']
+            cancel: "Annuler",
+            clear: "Effacer",
+            done: "Ok",
+            weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+            weekdays: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+            monthsShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aou', 'Sept', 'Oct', 'Nov', 'Déc'],
+            months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            weekdaysAbbrev: ['D', 'L', 'M', 'M', 'J', 'V', 'S']
         }
-    });
+    };
+
+    const date = document.querySelectorAll('.datepicker');
+    const instDate = M.Datepicker.init(date, dateOptions);
 
     //FormSelect
-    $('select').formSelect();
+    const select = document.querySelectorAll('select');
+    const instSelect = M.FormSelect.init(select);
 
     //Collapsible
-    $('.collapsible').collapsible();
+    const collab = document.querySelectorAll('.collapsible');
+    const instCollab = M.Collapsible.init(collab);
 
     //Auto complete
     require('./autocomplete');
 
     //Textaera count
-    $('textarea#description, textarea[name="ent_description"]').characterCounter();
+    const textCount = document.querySelectorAll('textarea#description, textarea[name="ent_description"]');
+    const instCount = M.CharacterCounter.init(textCount);
 
     //Distance Range count
     let range = document.getElementById('distance');
     if(range) {
         range.addEventListener('input', function () {
-            $('#rangeValue').text(range.value + ' km');
+            let textRange = document.querySelector('#rangeValue');
+            textRange.innerHTML = range.value + ' km';
         }, false)
     }
 
     //Confirmation suppression user
     let btnSupprUser = document.getElementById('btnSupprUser');
-    $('#checkUser').change(function(){
-        if (this.checked){
-            btnSupprUser.removeAttribute('disabled')
-        }else{
-            btnSupprUser.setAttribute('disabled', true)
-        }
-    })
-
-
+    const checkUser = document.getElementById('checkUser');
+    if(checkUser) {
+        checkUser.addEventListener('change', function () {
+            if (this.checked) {
+                btnSupprUser.removeAttribute('disabled')
+            } else {
+                btnSupprUser.setAttribute('disabled', true)
+            }
+        })
+    }
 });
 

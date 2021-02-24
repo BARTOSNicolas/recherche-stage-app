@@ -10,7 +10,7 @@
                     <input id="entreprise" type="text" class="validate" name="ent_name" value="{{ old('ent_name', $nom_ent) }}" required>
                     <label for="entreprise">Entreprise</label>
                     @error('ent_name')
-                    <span class="helper-text" data-error="wrong">{{$message}}</span>
+                        <span class="helper-text" data-error="wrong">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="input-field">
@@ -18,7 +18,7 @@
                     <input id="ville" type="text" class="validate" name="ent_city" value="{{ old('ent_city', $ville) }}" required>
                     <label for="ville">Ville</label>
                     @error('ent_city')
-                    <span class="helper-text" data-error="wrong">{{$message}}</span>
+                        <span class="helper-text" data-error="wrong">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="row">
@@ -109,11 +109,11 @@
 @endsection
 @section('script')
     <script>
-        $(document).ready(function() {
+        document.addEventListener("DOMContentLoaded", function(event) {
             @if ($errors->any())
-            @foreach ($errors->all() as $error)
-            M.toast({html: '{{ $error }}', displayLength: 5000, classes: 'toast-error'});
-            @endforeach
+                @foreach ($errors->all() as $error)
+                    M.toast({html: '{{ $error }}', displayLength: 5000, classes: 'toast-error'});
+                @endforeach
             @endif
         })
     </script>

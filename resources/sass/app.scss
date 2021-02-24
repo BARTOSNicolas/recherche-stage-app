@@ -255,7 +255,7 @@ header{
 a:not(.btn){
     color: $app-color-secondary;
     &:visited{
-        color: darken($app-color-secondary, 15%)
+        color: lighten($app-color-secondary, 10%)
     }
 }
 textarea.materialize-textarea{

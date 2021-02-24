@@ -29,7 +29,7 @@
                         <span>Voir les offres des partenaires</span>
                     </label>
                 </div>
-                <button type="submit" class="waves-effect waves-light btn autoDisable" disabled>Rechercher</button>
+                <button type="submit" class="waves-effect waves-light btn" id="autoDisable" disabled>Rechercher</button>
                 <p>nombres d'offres : @isset($datas){{ count($datas)}}@endisset</p>
             </form>
         </div>
@@ -165,10 +165,5 @@
         </div>
     </div>
 @endsection
-@section('script')
-    <script>
 
-
-    </script>
-@endsection
 
